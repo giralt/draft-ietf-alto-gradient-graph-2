@@ -103,7 +103,7 @@ TODO
 
 TODO
 
-# Compatibility with Other ALTO Extensions
+# Compatibility with Other ALTO Services and Extensions
 
 TODO
 
