@@ -19,14 +19,14 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "An ALTO Extension: Gradient Graph Service"
+title: "ALTO Extension: Gradient Graph Service"
 category: info
 
 docname: draft-giraltyellamraju-alto-gradient-graph-latest
 ipr: trust200902
-area: AREA
-workgroup: WG Working Group
-keyword: Internet-Draft
+area: Application
+workgroup: ALTO
+keyword: ALTO
 venue:
   group: WG
   type: Working Group
@@ -41,13 +41,26 @@ pi: [toc, sortrefs, symrefs]
 
 author:
  -
-    name: Your Name Here
-    organization: Your Organization Here
-    email: your.email@example.com
+    name: Jordi Ros-Giralt
+    organization: Qualcomm
+    email: jros@qti.qualcomm.com
+ -
+    name: Sruthi Yellamraju
+    organization: Qualcomm
+    email: yellamra@qti.qualcomm.com
 
 normative:
 
 informative:
+
+  G2-SMETRICS:
+    title : "XXX"
+    author:
+      -
+        ins: J. Ros-Giralt
+        name: Jordi Ros-Giralt
+        org: Reservoir Labs
+
 
 
 --- abstract
@@ -66,16 +79,49 @@ TODO Introduction
 
 {::boilerplate bcp14-tagged}
 
+# Brief Introductions to Bottleneck Structures
+
+TODO
+
+# Use Cases
+
+TODO
+
+# Requirements
+
+TODO
+
+# Gradient Graph Extension: Overview
+
+TODO
+
+# Specification: Basic Data Types
+
+TODO
+
+# Specification: Service Extensions
+
+TODO
+
+# Compatibility with Other ALTO Extensions
+
+TODO
+
+# General Discussions
+
+TODO
+
+# Examples
+
+TODO
 
 # Security Considerations
 
-TODO Security
-
+TODO
 
 # IANA Considerations
 
-This document has no IANA actions.
-
+TODO
 
 --- back
 
