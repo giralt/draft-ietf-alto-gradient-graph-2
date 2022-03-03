@@ -220,7 +220,7 @@ ALTO standard and support the description of the integration requirements.
 # Brief Introduction to Bottleneck Structures
 
 [G2-SIGMETRICS] and [G2-SIGCOMM] introduce a new mathematical
-framework to optimize network performace called the
+framework to optimize network performance called the
 Quantitative Theory of Bottleneck Structures (QTBS).
 The core building block of QTBS is a computational graph called
 *bottleneck structure*, which allows to qualify and quantify the
@@ -547,7 +547,7 @@ While derivatives describe how the performance of a network
 changes when a very small (infinitesimal) change is applied
 to its configuration, network reconfigurations can accept
 changes to the network that are arbitrarily large. For instance,
-traffic shapping a set of flows to reduce their rates by 10 Mbps
+traffic shaping a set of flows to reduce their rates by 10 Mbps
 is a network reconfiguration that is not infinitesimal.
 We note that bottleneck structures can also be used to compute
 optimized network reconfigurations consisting of non-infinitesimal
@@ -567,79 +567,79 @@ that can be optimized by using bottleneck structures.
 The following is a list of some of the network reconfigurations
 that can be efficiently computed and optimized using bottleneck structures:
 
- **Flow routing**. Both the operation of routing a new flow or
-erouting an existing flow on a network can be modeled as a perturbation,
-hose impact can be efficiently measured using bottleneck structures.
-n particular, QTBS can be used to resolve the joint congestion
-ontrol and routing optimization problem for individual
+- **Flow routing**. Both the operation of routing a new flow or
+rerouting an existing flow on a network can be modeled as a perturbation,
+whose impact can be efficiently measured using bottleneck structures.
+In particular, QTBS can be used to resolve the joint congestion
+control and routing optimization problem for individual
 lows (see Section 3.1 in [G2-TREP]).
 
- **Traffic shaping**. Traffic shaping a flow corresponds to the action
-f taking a derivative with respect to the rate of the flow. Bottleneck
-tructures can be used by network operators and application service
-roviders to compute such perturbations. For instance, to accelerate
- large scale data transfer, an application can use bottleneck structures
-o identify optimal traffic shaping configurations (see Section 3.3 in
-G2-TREP]).
+- **Traffic shaping**. Traffic shaping a flow corresponds to the action
+of taking a derivative with respect to the rate of the flow. Bottleneck
+structures can be used by network operators and application service
+providers to compute such perturbations. For instance, to accelerate
+a large scale data transfer, an application can use bottleneck structures
+to identify optimal traffic shaping configurations (see Section 3.3 in
+[G2-TREP]).
 
- **Bandwidth enforcement**. In high-performance networks that target
-lose to 100% link utilization such as Google's B4 network [B4-SIGCOMM],
- centralized SDN controller is used collect the state of the network
-nd compute an optimized multipath bandwidth allocation vector. The
-olution is then deployed at the edge of the network using a technique
-nown as bandwidth enforcement [BE-SIGCOMM]. By using bottleneck structures
-o efficiently compute changes in the bandwidth allocated to each flow path,
-perators can efficiently derive improved bandwidth allocation vectors.
+- **Bandwidth enforcement**. In high-performance networks that target
+close to 100% link utilization such as Google's B4 network [B4-SIGCOMM],
+a centralized SDN controller is used collect the state of the network
+and compute an optimized multipath bandwidth allocation vector. The
+solution is then deployed at the edge of the network using a technique
+known as bandwidth enforcement [BE-SIGCOMM]. By using bottleneck structures
+to efficiently compute changes in the bandwidth allocated to each flow path,
+operators can efficiently derive improved bandwidth allocation vectors.
 
- **Flow scheduling**. When a flow initiates transmitting data on a network,
-t uses bandwidth along its path, creating a ripple effect that impacts
-he performance of other flows in the network. Similarly, the termination
-f a flow frees bandwidth along its path, creating another perturbation
-hat propagates through the network. Bottleneck structures can efficiently
-odel and compute the effect of flow arrival and departure in a communication
-etwork by using simple delta calculations according to the link and flow
-quations (see {{quantifying}} and [G2-SIGCOMM]). This information can be used by
-pplications that need to perform bulk data transfer to decide when
-o schedule a flow.  More in particular, it can be used to enhance the
-LTO Cost Calendar service {{RFC8896}}.
+- **Flow scheduling**. When a flow initiates transmitting data on a network,
+it uses bandwidth along its path, creating a ripple effect that impacts
+the performance of other flows in the network. Similarly, the termination
+of a flow frees bandwidth along its path, creating another perturbation
+that propagates through the network. Bottleneck structures can efficiently
+model and compute the effect of flow arrival and departure in a communication
+network by using simple delta calculations according to the link and flow
+equations (see {{quantifying}} and [G2-SIGCOMM]). This information can be used by
+applications that need to perform bulk data transfer to decide when
+to schedule a flow.  More in particular, it can be used to enhance the
+ALTO Cost Calendar service {{RFC8896}}.
 
- **Service placement**. Deploying application services in a network
-equires deciding the location of the compute and storage resources
-eeded to run the service. For instance, in edge computing, an extended
-eality (XR) server could be deployed at the distributed unit (DU), the central i
-nit (CU), the mobile core (MC) or the central cloud [PETERSON]. Bottleneck
-tructures can be used to measure the effect of placing a service on each of the
-andidate locations, helping the application service provider to make
-ptimized decisions.
-
-
- **Multi-job scheduling**. Running a job on a network implies a number
-f flows will be initiated and terminated throughout the execution of the job.
-he ripple effects generated from the execution of a job can also be measured
-sing bottleneck structures. This can be used to decide when to optimally
-aunch one or more jobs. For instance, in a data center, bottleneck structure
-nalysis can help the application decide how to optimally schedule multiple AI
-raining or inference jobs that are sharing the same interconnect [G2-SIGCOMM].
+- **Service placement**. Deploying application services in a network
+requires deciding the location of the compute and storage resources
+needed to run the service. For instance, in edge computing, an extended
+reality (XR) server could be deployed at the distributed unit (DU), the central
+unit (CU), the mobile core (MC) or the central cloud [PETERSON]. Bottleneck
+structures can be used to measure the effect of placing a service on each of the
+candidate locations, helping the application service provider to make
+optimized decisions.
 
 
- **Link capacity upgrades**. In capacity planning, operators often
-ave a fixed budget and need to decide how to optimally add capacity
-o a network in order to maximize its performance. The effect of a link
-pgrade operation can be computed as a derivative with respect to a change
-an increase) in the capacity of a link. Through the processing of historical
-low information from the network (e.g., NetFlow logs), bottleneck structures
-an efficiently compute the effect of each link upgrade and identify
-hose that yield maximal performance.
+- **Multi-job scheduling**. Running a job on a network implies a number
+of flows will be initiated and terminated throughout the execution of the job.
+the ripple effects generated from the execution of a job can also be measured
+using bottleneck structures. This can be used to decide when to optimally
+launch one or more jobs. For instance, in a data center, bottleneck structure
+analysis can help the application decide how to optimally schedule multiple AI
+training or inference jobs that are sharing the same interconnect [G2-SIGCOMM].
 
- **Path shortcuts**. Operators in wide area networks need to
-ecide whether a communication path should be set up as purely optical (bypassing layer 3
-outing) or undergo an optical-to-electrical-to-optical (OEO) conversion at certain
-outers in order to perform layer 3 routing [SH-SIGCOMM].
-he trade-off is one of cost-efficiency versus
-etter routing control of the network. Bottleneck structures can be used
-o search for paths that are optimally suitable for being offloaded to
- purely optical path. These are also known in the literature
-s path shortcuts [SH-SIGCOMM].
+
+- **Link capacity upgrades**. In capacity planning, operators often
+have a fixed budget and need to decide how to optimally add capacity
+to a network in order to maximize its performance. The effect of a link
+upgrade operation can be computed as a derivative with respect to a change
+(an increase) in the capacity of a link. Through the processing of historical
+flow information from the network (e.g., NetFlow logs), bottleneck structures
+can efficiently compute the effect of each link upgrade and identify
+those that yield maximal performance.
+
+- **Path shortcuts**. Operators in wide area networks need to
+decide whether a communication path should be set up as purely optical (bypassing layer 3
+routing) or undergo an optical-to-electrical-to-optical (OEO) conversion at certain
+routers in order to perform layer 3 routing [SH-SIGCOMM].
+The trade-off is one of cost-efficiency versus
+better routing control of the network. Bottleneck structures can be used
+to search for paths that are optimally suitable for being offloaded to
+a purely optical path. These are also known in the literature
+as path shortcuts [SH-SIGCOMM].
 
 
 # ALTO Bottleneck Structure Service Use Cases
@@ -680,13 +680,13 @@ government supported networks. For instance, Google's B4 network supports
 large-scale data push synchronizing state across multiple global
 data centers [B4-SIGCOMM]. Another common use case is found in
 science networks, where massive data sets such as those originated
-from the large hadron collider at CERN, Switzerland, need to be shared
+from the Large Hadron Collider at CERN, Switzerland, need to be shared
 with scientific labs around the world. In this section, we show how
 bottleneck structures can be used to reconfigure a network towards
 accelerating a given data transfer with the goal to meet a certain
 time constraint.
 
-To illustre this use case, we will assume the simple bottleneck
+To illustrate this use case, we will assume the simple bottleneck
 structure shown in {{flowaccel}}.
 
                 +------+
@@ -825,7 +825,7 @@ of a real-time video application and aims at dynamically adapting the video
 bitrate to stay within the available network capacity.
 A limitation in the current algorithms, however, is their lack of
 network state visibility. This requires the algorithms
-to rely enterily on local indicators such as packet loss or latency,
+to rely entirely on local indicators such as packet loss or latency,
 which leads to poor training and inference performance.
 Information provided by the bottleneck structure (which includes
 topological, routing and flow information of the network in a single
@@ -872,7 +872,7 @@ to integrate the BSG service into the ALTO standard.
 ## Example of Network-Aware Application using the Bottleneck Structure Graph {#req_example}
 
 {{b4}} provides a view of Google's B4 network as presented in [B4-SIGCOMM], providing connectivity to twelve
-datacenters distributed across the world (two in Asia, six in America and four in Europe).
+data centers distributed across the world (two in Asia, six in America and four in Europe).
 
         +-----+   +-----+  +-----+  +-----+   +------+    +------+
         |     |   |     |  |     |  |     |   |      |    |      |
@@ -949,7 +949,7 @@ on the algorithm used to compute the bottleneck structure.)
        |  f6  |    |   f9  |       |  f23  |   |  f18  | (...)
        |      |    |       |       |       |   |       |
        +------+    +-------+       +-------+   +-------+
-{: #b4fgg title="Bootleneck structure of Google's B4 network example." }
+{: #b4fgg title="Bottleneck structure of Google's B4 network example." }
 
 For the sake of compactness, {{b4fgg}} only includes the bottleneck links
 and a subset of the flow vertices that are part of the complete bottleneck
@@ -984,7 +984,7 @@ level 1 will have a higher influence to the overall performance of
 the network than links at level 2. Consider a level-1 link, for instance
 l15. In {{b4fgg}}, we can see that flows f1, f3, etc. from level 1
 and flows f6, f9, f23, f18, etc. from level 2 will be impacted
-by the performance of link l15 (since there is a directe path
+by the performance of link l15 (since there is a directed path
 from l15 to all of these flows). Consider now a level-2 link, for
 instance l8. Only flows f6, f23, etc. at level 2 will be impacted
 by the performance of link l8.
@@ -1002,7 +1002,7 @@ link l15 at the upper level of the bottleneck structure, leading to
 a lower transmission rate. If instead we choose the non-shortest path
 DC11 -> l19 -> DC10 -> l8 -> DC8 -> l16 -> DC4, now the flow
 will be bottlenecked at link l8 (at the lower level of the
-bottlenech structure), leading to a higher transmission rate.
+bottleneck structure), leading to a higher transmission rate.
 
 Using QTBS, we can also numerically compute the transmission rate of the flow
 on each of the two path options.  (See Section 3.1 in [G2-TREP] for a detailed
@@ -1125,7 +1125,7 @@ the ALTO server to obtain the resulting effect of a network
 reconfiguration (see {{types_reconfigurations}}).
 
 For example, an application may be interested in finding a
-high-throughput path. Using requeriment R3A, it can obtain
+high-throughput path. Using requirement R3A, it can obtain
 a copy of the bottleneck structure, and use it to
 select a few paths that comply with the application
 constraints and that are located at the higher levels of the
