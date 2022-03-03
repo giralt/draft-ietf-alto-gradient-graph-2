@@ -30,10 +30,10 @@ keyword: ALTO
 venue:
   group: WG
   type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+  mail: alto@ietf.org
+  arch: https://mailarchive.ietf.org/arch/browse/alto/
+  github: giralt/draft-ietf-alto-gradient-graph
+  latest: https://giralt.github.io/draft-ietf-alto-gradient-graph/draft-giraltyellamraju-alto-bsg-requirements.html
 
 stand_alone: yes
 smart_quotes: no
