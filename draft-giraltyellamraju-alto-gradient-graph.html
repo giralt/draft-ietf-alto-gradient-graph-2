@@ -1017,7 +1017,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ros-Giralt &amp; Yellamraju</td>
-<td class="center">Expires 3 September 2022</td>
+<td class="center">Expires 4 September 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1030,12 +1030,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-giraltyellamraju-alto-gradient-graph-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-03-02" class="published">2 March 2022</time>
+<time datetime="2022-03-03" class="published">3 March 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-09-03">3 September 2022</time></dd>
+<dd class="expires"><time datetime="2022-09-04">4 September 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1088,7 +1088,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 3 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 4 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1569,7 +1569,7 @@ bandwidth allocation property that all bottleneck structures satisfy:<a href="#s
 <ul class="normal">
 <li class="normal" id="section-3.6-7.1">
             <p id="section-3.6-7.1.1"><strong>Property 3. Monotonic bandwidth allocation (MBA).</strong> Let si be
-the transmission rate of a flow fj that is bottlenecked at link li.
+the transmission rate of the flows bottlenecked at link li.
 Then, for any path in the bottleneck structure of the form<a href="#section-3.6-7.1.1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.6-7.1.2">
 <pre>
@@ -2012,7 +2012,7 @@ network slices in data centers.<a href="#section-4.6-1" class="pilcrow">¶</a></
 <p id="section-5-1">This section provides an illustrative example of how an application can benefit from the BSG
 service defined in this document. From this example, we then provide a discussion on the requirements
 to integrate the BSG service into the ALTO standard.<a href="#section-5-1" class="pilcrow">¶</a></p>
-<div id="example-of-network-aware-application-using-the-bottleneck-structure-graph">
+<div id="req_example">
 <section id="section-5.1">
         <h3 id="name-example-of-network-aware-ap">
 <a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-example-of-network-aware-ap" class="section-name selfRef">Example of Network-Aware Application using the Bottleneck Structure Graph</a>
@@ -2109,7 +2109,7 @@ on the algorithm used to compute the bottleneck structure.)<a href="#section-5.1
 <a href="#name-bootleneck-structure-of-goo" class="selfRef">Bootleneck structure of Google's B4 network example.</a>
           </figcaption></figure>
 </div>
-<p id="section-5.1-7">For the sake of compactness, <a href="#b4fgg" class="xref">Figure 5</a> includes only the bottleneck links
+<p id="section-5.1-7">For the sake of compactness, <a href="#b4fgg" class="xref">Figure 5</a> only includes the bottleneck links
 and a subset of the flow vertices that are part of the complete bottleneck
 structure. In particular, out of the 19 links that are part of B4,
 six links (l15, l7, l8, l10, l5, l3) are bottlenecks.<a href="#section-5.1-7" class="pilcrow">¶</a></p>
@@ -2146,22 +2146,22 @@ DC7 -&gt; l15 -&gt; DC4 is often used as the default option.
 Doing so, however, implies that the flow will be bottlenecked at
 link l15 at the upper level of the bottleneck structure, leading to
 a lower transmission rate. If instead we choose the non-shortest path
-DC11 -&gt; l19 -&gt; dc10 -&gt; l8 -&gt; DC8 -&gt; l16 -&gt; DC4, now the flow
+DC11 -&gt; l19 -&gt; DC10 -&gt; l8 -&gt; DC8 -&gt; l16 -&gt; DC4, now the flow
 will be bottlenecked at link l8 (at the lower level of the
 bottlenech structure), leading to a higher transmission rate.<a href="#section-5.1-13" class="pilcrow">¶</a></p>
 <p id="section-5.1-14">Using QTBS, we can also numerically compute the transmission rate of the flow
-on each of the two path options. In particular, we obtain that when the
+on each of the two path options.  (See Section 3.1 in <span>[<a href="#G2-TREP" class="xref">G2-TREP</a>]</span> for a detailed
+description of how to compute the transmission rate assigned to
+the flow on each of these paths.) In particular, we obtain that when the
 application chooses the shortest path (bottlenecked at level 1 of the
 bottleneck structure), it gets a transmission rate of 1.429 Gbps.
 If instead the application chooses the slightly longer path (bottlenecked at
 level 2 of the bottleneck structure), then it gets a transmission
 rate of 2.5 Gbps, an increase of 74.95% with respect to the
-shortest path solution. (See Section 3.1 in <span>[<a href="#G2-TREP" class="xref">G2-TREP</a>]</span> for a detail
-description of how to compute the transmission rate assigned to
-the flow on each of these paths.)<a href="#section-5.1-14" class="pilcrow">¶</a></p>
+shortest path solution.<a href="#section-5.1-14" class="pilcrow">¶</a></p>
 <p id="section-5.1-15"><span>[<a href="#G2-TREP" class="xref">G2-TREP</a>]</span> introduces also a very efficient routing algorithm that
 uses the bottleneck structure to find the maximal throughput path
-for a flow in O(V + E * log(V)) steps, where V is the number of routers
+for a flow in O(V+E*log(V)) steps, where V is the number of routers
 and E is the number of links in the network.<a href="#section-5.1-15" class="pilcrow">¶</a></p>
 <p id="section-5.1-16">Overall, this example illustrates that, equipped with knowledge
 about the bottleneck structure of a network, an application
@@ -2214,7 +2214,9 @@ a network optimization math library.<a href="#section-5.2-4.2" class="pilcrow">�
 an ALTO server must compute:<a href="#section-5.2-5" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5.2-6.1">Requirement 1B (R1B). The ALTO server <span class="bcp14">MUST</span> support the computation
-of at least one bottleneck structure type from <a href="#types_bs" class="xref">Section 3.7</a>.<a href="#section-5.2-6.1" class="pilcrow">¶</a>
+of at least one bottleneck structure type from <a href="#types_bs" class="xref">Section 3.7</a>. It is
+also <span class="bcp14">RECOMMENDED</span> that the ALTO server implements at least the path
+gradient graph (PGG).<a href="#section-5.2-6.1" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
@@ -2224,28 +2226,29 @@ of at least one bottleneck structure type from <a href="#types_bs" class="xref">
         <h3 id="name-requirement-2-information-r">
 <a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-requirement-2-information-r" class="section-name selfRef">Requirement 2: Information Received from the Network</a>
         </h3>
-<p id="section-5.3-1">To compute the bottleneck structures, two pieces of information
+<p id="section-5.3-1">To compute a bottleneck structure, two pieces of information
 are required:<a href="#section-5.3-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5.3-2.1">
-            <p id="section-5.3-2.1.1">Topology (T) Object. The T Object is a data structure
+            <p id="section-5.3-2.1.1">Topology Object (T). The T Object is a data structure
 that includes:<a href="#section-5.3-2.1.1" class="pilcrow">¶</a></p>
 <p id="section-5.3-2.1.2">
 (1) A Topology Graph (V, E), where V is the set of routers and E
  is the set of links connecting the routers in the network.<a href="#section-5.3-2.1.2" class="pilcrow">¶</a></p>
 <p id="section-5.3-2.1.3">
-(2) A Capacity (C) Dictionary, mapping each link identifier with
- the capacity (in bps) of the link.<a href="#section-5.3-2.1.3" class="pilcrow">¶</a></p>
+(2) A Capacity Dictionary (C), a key-value table mapping each link
+ with its capacity (in bps).<a href="#section-5.3-2.1.3" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.3-2.2">Flow (F) Dictionary. The F Dictionary is a key-value table that
-maps a flow identifier with the set of links traversed by the flow.<a href="#section-5.3-2.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-5.3-2.2">Flow Dictionary (F). The F Dictionary is a key-value table
+mapping every flow with the set of links it traverses.<a href="#section-5.3-2.2" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="section-5.3-3">As shown in <span>[<a href="#G2-TREP" class="xref">G2-TREP</a>]</span>, the above information is enough to compute
 the bottleneck structure. In fact, with only the F and C dictionaries,
-one can compute the bottleneck structure. The topology graph is needed
-to perform optimal routing computations (for instance, to find new
-paths in the network that yield higher throughput).<a href="#section-5.3-3" class="pilcrow">¶</a></p>
+one can compute the bottleneck structure. The topology graph (V, E) is
+needed to perform optimal routing computations (for instance, to find new
+paths in the network that yield higher throughput, as illustrated
+in <a href="#req_example" class="xref">Section 5.1</a>).<a href="#section-5.3-3" class="pilcrow">¶</a></p>
 <p id="section-5.3-4">The above discussion leads to the following requirement:<a href="#section-5.3-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5.3-5.1">Requirement 2A (R2A). The ALTO server <span class="bcp14">MUST</span> collect information about
@@ -2255,10 +2258,12 @@ link and (3) the set of links traversed by each flow.<a href="#section-5.3-5.1" 
         </ul>
 <p id="section-5.3-6">Information about the set of routers, links and link capacity is
 typically available from protocols and technologies such as
-SNMP, BGP-LS, SDN, or domain specific topology files. This
-information is enough to construct the T Object.<a href="#section-5.3-6" class="pilcrow">¶</a></p>
-<p id="section-5.3-7">Information about the set of links traversed by each flow can
-be obtained from protocols such as NetFlow, sFlow, IPFIX, etc.<a href="#section-5.3-7" class="pilcrow">¶</a></p>
+SNMP, BGP-LS, SDN, or domain specific topology logs. This
+information is enough to construct the T Object.
+Information about the set of links traversed by each flow can
+be obtained from protocols such as NetFlow, sFlow, IPFIX, etc.
+See <span>[<a href="#FLOWDIR" class="xref">FLOWDIR</a>]</span> and <span>[<a href="#G2-SC" class="xref">G2-SC</a>]</span> for examples of how requirement R2A
+is implemented in real-world production networks.<a href="#section-5.3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="requirement-3-information-passed-to-the-application">
@@ -2273,10 +2278,6 @@ information:<a href="#section-5.4-1" class="pilcrow">¶</a></p>
 <li class="normal" id="section-5.4-2.1">Requirement 3A (R3A). The ALTO client <span class="bcp14">MUST</span> be able to query the
 ALTO server to obtain the current bottleneck structure
 of the network, represented as a digraph.<a href="#section-5.4-2.1" class="pilcrow">¶</a>
-</li>
-          <li class="normal" id="section-5.4-2.2">Requirement 3B (R3B). The ALTO client <span class="bcp14">MUST</span> be able to query
-the ALTO server to obtain the effect of a network
-reconfiguration (see <a href="#types_reconfigurations" class="xref">Section 3.9</a>).<a href="#section-5.4-2.2" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="section-5.4-3">In addition, the current ALTO services can be extended with
@@ -2307,18 +2308,21 @@ structure graph (see R1A), in this section we enumerate additional
 capabilities that must be supported by the ALTO BSG service
 to ensure it is effective in helping applications optimize
 their performance for each of the supported use cases.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
-<p id="section-5.5-2">Requirement 4A (R4A). The ALTO BSG service <span class="bcp14">MUST</span> be able to
+<ul class="normal">
+<li class="normal" id="section-5.5-2.1">Requirement 4A (R4A). The ALTO BSG service <span class="bcp14">MUST</span> be able to
 compute the effect of network reconfigurations using bottleneck
 structure analysis and according to the types described in
-<a href="#types_reconfigurations" class="xref">Section 3.9</a>.<a href="#section-5.5-2" class="pilcrow">¶</a></p>
-<p id="section-5.5-3">For example, an extended reality application might need to
+<a href="#types_reconfigurations" class="xref">Section 3.9</a>.<a href="#section-5.5-2.1" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-5.5-3">For example, an extended reality (XR) application might need to
 choose where to place a containerized instance of
 the XR service among a set of possible server racks located
 in various edge cloud locations. The application would
 query the ALTO BSG service to obtain the projected performance
 results of placing the new service instance on each possible
 location, allowing it to select the one that would yield
-the highest performance. (See also Section XXX.)<a href="#section-5.5-3" class="pilcrow">¶</a></p>
+the highest performance.<a href="#section-5.5-3" class="pilcrow">¶</a></p>
 <p id="section-5.5-4">The following requirement is necessary to ensure that the
 information provided by the BSG service is not stale:<a href="#section-5.5-4" class="pilcrow">¶</a></p>
 <p id="section-5.5-5">Requirement 4B (R4B). The BSG service <span class="bcp14">MUST</span> be able to update
@@ -2326,7 +2330,7 @@ the bottleneck structure graph in near-real time, at least
 once a minute or less.<a href="#section-5.5-5" class="pilcrow">¶</a></p>
 <p id="section-5.5-6">In <span>[<a href="#G2-SC" class="xref">G2-SC</a>]</span> it is shown that bottleneck structures can be computed
 in a fraction of a session for a production US wide network
-with 28 routers and 78 links (XXX update with 2021 data set).
+with about 100 routers and 500 links.
 Thus, the above requirement should be achievable with a good
 implementation of the bottleneck structure algorithm <span>[<a href="#G2-TREP" class="xref">G2-TREP</a>]</span>.<a href="#section-5.5-6" class="pilcrow">¶</a></p>
 </section>
@@ -2441,21 +2445,25 @@ implementation of the bottleneck structure algorithm <span>[<a href="#G2-TREP" c
         <dd>
 <span class="refTitle">"BwE: Flexible, Hierarchical Bandwidth Allocation for WAN Distributed Computing"</span>, <span class="seriesInfo">ACM SIGCOMM </span>, <time datetime="2015" class="refDate">2015</time>. </dd>
 <dd class="break"></dd>
+<dt id="FLOWDIR">[FLOWDIR]</dt>
+        <dd>
+<span class="refAuthor">Enric Pujol, .</span>, <span class="refAuthor">Ingmar Poese, .</span>, <span class="refAuthor">Johannes Zerwas, .</span>, <span class="refAuthor">Georgios Smaragdakis, .</span>, and <span class="refAuthor">. Anja Feldmann</span>, <span class="refTitle">"Steering Hyper-Giants’ Traffic at Scale"</span>, <span class="seriesInfo">ACM CoNEXT </span>, <time datetime="2019" class="refDate">2019</time>. </dd>
+<dd class="break"></dd>
 <dt id="G2-SC">[G2-SC]</dt>
         <dd>
-<span class="refAuthor">Ros-Giralt, J.</span>, <span class="refTitle">"Computing Bottleneck Structures at Scale for High-Precision Network Performance Analysis"</span>, <span class="seriesInfo">IEEE International Workshop on Innovating the Network for Data Intensive Science (INDIS), Supercomputing </span>, <span>n.d.</span>. </dd>
+<span class="refAuthor">Noah Amsel, Jordi Ros-Giralt, Sruthi Yellamraju etc, .</span>, <span class="refTitle">"Computing Bottleneck Structures at Scale for High-Precision Network Performance Analysis"</span>, <span class="seriesInfo">IEEE International Workshop on Innovating the Network for Data Intensive Science (INDIS), Supercomputing </span>, <span>n.d.</span>. </dd>
 <dd class="break"></dd>
 <dt id="G2-SIGCOMM">[G2-SIGCOMM]</dt>
         <dd>
-<span class="refAuthor">Ros-Giralt, J.</span>, <span class="refTitle">"XXX"</span>, <span class="seriesInfo">ACM SIGCOMM </span>, <span>n.d.</span>. </dd>
+<span class="refAuthor">Ros-Giralt, Noah Amsel, Sruthi Yellamraju etc, J.</span>, <span class="refTitle">"Designing data center networks using bottleneck structures"</span>, <span class="seriesInfo">ACM SIGCOMM </span>, <span>n.d.</span>. </dd>
 <dd class="break"></dd>
 <dt id="G2-SIGMETRICS">[G2-SIGMETRICS]</dt>
         <dd>
-<span class="refAuthor">Ros-Giralt, J.</span>, <span class="refTitle">"XXX"</span>, <span class="seriesInfo">ACM SIGMETRICS </span>, <span>n.d.</span>. </dd>
+<span class="refAuthor">Ros-Giralt, Noah Amsel, Sruthi Yellamraju etc, J.</span>, <span class="refTitle">"On the Bottleneck Structure of Congestion-Controlled Networks"</span>, <span class="seriesInfo">ACM SIGMETRICS </span>, <span>n.d.</span>. </dd>
 <dd class="break"></dd>
 <dt id="G2-TREP">[G2-TREP]</dt>
         <dd>
-<span class="refAuthor">Ros-Giralt, J.</span>, <span class="refTitle">"XXX"</span>, <span>n.d.</span>. </dd>
+<span class="refAuthor">Ros-Giralt, Noah Amsel, Sruthi Yellamraju etc, J.</span>, <span class="refTitle">"A Quantitative Theory of Bottleneck Structures for Data Networks"</span>, <span>n.d.</span>. </dd>
 <dd class="break"></dd>
 <dt id="GALLAGER">[GALLAGER]</dt>
         <dd>
