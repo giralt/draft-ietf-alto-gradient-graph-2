@@ -8,7 +8,18 @@
 <meta content="Jordi Ros-Giralt" name="author">
 <meta content="Sruthi Yellamraju" name="author">
 <meta content="
-       TODO Abstract 
+       This document proposes an extension to the base Application-Layer
+Traffic Optimization (ALTO) protocol to support bottleneck structures
+as an efficient representation of the state of a network.
+Bottleneck structures are efficient computational graphs that allow
+network operators and application service
+providers to optimize application performance in a
+variety of communication problems including routing, flow control,
+flow scheduling, bandwidth
+prediction, and network slicing, among others.  This document
+introduces a new abstraction called Bottleneck Structure Graph (BSG)
+and the necessary requirements to integrate it into the
+ALTO standard. 
     " name="description">
 <meta content="xml2rfc 3.12.1" name="generator">
 <meta content="ALTO" name="keyword">
@@ -1052,7 +1063,18 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <h1 id="title">Supporting Bottleneck Structure Graphs in ALTO: Use Cases and Requirements</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">TODO Abstract<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This document proposes an extension to the base Application-Layer
+Traffic Optimization (ALTO) protocol to support bottleneck structures
+as an efficient representation of the state of a network.
+Bottleneck structures are efficient computational graphs that allow
+network operators and application service
+providers to optimize application performance in a
+variety of communication problems including routing, flow control,
+flow scheduling, bandwidth
+prediction, and network slicing, among others.  This document
+introduces a new abstraction called Bottleneck Structure Graph (BSG)
+and the necessary requirements to integrate it into the
+ALTO standard.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1248,28 +1270,27 @@ svg [stroke="fill"], svg [fill^="#fff"] {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">This document proposes an extension to the base Application-Layer
-Traffic Optimization (ALTO) protocol to support bottleneck structures
-as an efficient representation of the state of a network. Bottleneck
-structures have been recently introduced in <span>[<a href="#G2-SIGCOMM" class="xref">G2-SIGCOMM</a>]</span> and
-<span>[<a href="#G2-SIGMETRICS" class="xref">G2-SIGMETRICS</a>]</span> as computational graphs that embed information about
+<p id="section-1-1">Bottleneck structures have been recently introduced in <span>[<a href="#G2-SIGCOMM" class="xref">G2-SIGCOMM</a>]</span> and
+<span>[<a href="#G2-SIGMETRICS" class="xref">G2-SIGMETRICS</a>]</span> as efficient computational graphs that embed information about
 the topology, routing and flow information of a network. These
 computational graphs allow network operators and application service
-providers to efficiently compute network derivatives that can be used
+providers to compute network derivatives that can be used
 to make optimized traffic optimizationg decisions. For instance, using
 the bottleneck structure of a network, a real-time communication (RTC)
 application can efficiently infer the multi-hop end-to-end available
 bandwidth, and use that information to tune the encoder's transmission
 rate and optimize the user's Quality of Experience (QoE).
-Bottleneck structures can be used by the
-application to address a wide variety of communication optimization
-problems, including routing, flow control, flow scheduling, bandwidth
-prediction, and network slicing, among others.  This extension
-introduces a new abstraction called Bottleneck Structure Graph (BSG)
-and the necessary requirements to integrate it into the existing
+Bottleneck structures can be used by the application to address a wide
+variety of communication optimization problems, including routing,
+flow control, flow scheduling, bandwidth prediction, and network slicing,
+among others.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">This document introduces a new abstraction called Bottleneck Structure Graph
+(BSG) and the necessary requirements to integrate it into the existing
 ALTO services (Network Map, Cost Map, Entity Property Map and Endpoint
 Cost Map) exposing the properties of the bottleneck structure
-to help optimize application performance.<a href="#section-1-1" class="pilcrow">¶</a></p>
+to help optimize application performance. Use cases are also introduced
+to motivate the relevancy of bottleneck structures in the context of the
+ALTO standard and support the description of the integration requirements.<a href="#section-1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
