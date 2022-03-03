@@ -194,7 +194,7 @@ Bottleneck structures have been recently introduced in [G2-SIGCOMM] and
 the topology, routing and flow information of a network. These
 computational graphs allow network operators and application service
 providers to compute network derivatives that can be used
-to make optimized traffic optimization decisions. For instance, using
+to make traffic optimization decisions. For instance, using
 the bottleneck structure of a network, a real-time communication (RTC)
 application can efficiently infer the multi-hop end-to-end available
 bandwidth, and use that information to tune the encoder's transmission
