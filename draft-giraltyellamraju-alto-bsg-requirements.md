@@ -176,6 +176,13 @@ informative:
         ins: Dharma Shukla et al
         org: Microsoft
 
+  JSP-INFOCOM :
+    title : "Joint Service Placement and Request Routing in Multi-cell Mobile Edge Computing Networks"
+    author :
+      -
+        ins: Konstantinos Poularakis
+        org: Yale University
+
 
 --- abstract
 
@@ -694,6 +701,17 @@ the performance of each flow. See for instance Sections 3.1 and
 3.2 in [G2-TREP] for examples on how bottleneck structures can be
 used to estimate the available bandwidth of an application.
 
+An ALTO server could help the application service provider obtain
+the available bandwidth on a given path by exposing the bottleneck
+structure of the network. With this information alone, the
+provider could directly obtain the available bandwidth.
+Alternatively, the application service could query the
+ALTO server by passing the path for which the available
+bandwidth needs to be computed,
+and the ALTO server could return this value without the need to
+share the complete bottleneck structure.
+
+
 ## Time-bound Constrained Flow Acceleration for Large Data Set Transfers
 
 Bulk data transfer is an important application to both commercial and
@@ -799,6 +817,16 @@ traffic shape flow f1) and to quantify the impact on the
 flow being accelerated. This information can also be used by
 the application to estimate the flow's completion time.
 
+An ALTO server could help the application service provider identify
+an optimized traffic shaping strategy by exposing the bottleneck
+structure of the network. With this information alone, the
+provider could efficiently compute an optimized set of traffic
+shapers. Alternatively, the application service could query the
+ALTO server by passing the set of flows that are allowed
+to be traffic shaped and the flow that needs to be accelerated,
+and the ALTO server could return the set of recommended
+traffic shapers.
+
 
 ## Application Performance Optimization Through AI Modeling
 
@@ -853,6 +881,12 @@ topological, routing and flow information of the network in a single
 digraph) exposed via the ALTO service could help unlock a richer set of
 machine learning algorithms to optimize application performance.
 
+An ALTO server could help the application service provider implement
+AI-assisted prediction algorithms by exposing the bottleneck
+structure of the network. Alternatively, ALTO could implement
+an AI-assisted prediction module with the help of bottleneck
+structures. The application would then query the ALTO server
+to obtain the predicted value.
 
 
 ## Optimal Joint Congestion Control and Routing
@@ -885,15 +919,71 @@ placed on the network (i.e., taking into account the effect of placing
 the flow).
 
 The solution to this problem is introduced in [G2-TREP] by employing a
-strategy that combines the strenghts of both the Dijkstra algorithm
+strategy that combines the strengths of both the Dijkstra algorithm
 and the insights revealed by the bottleneck structure. The algorithm
 can both compute the optimal path and measure the overall network-wide
 impact of deploying the new flow on the path. It also enables a framework
-to identify new good-performing paths that have a limitted
+to identify new good-performing paths that have a limited
 negative impact on the rest of the flows in the network.
 This allows network and application providers to identify paths that
 can both provide good performance to the newly added application flow
 while preserving the performance of the existing high-priority flows.
+
+An ALTO server could help the application service provider optimize the
+path selection decision by exposing the bottleneck structure of the
+network. With this information alone, the provider could efficiently
+compute the optimal path (e.g., using the algorithm introduced
+in [G2-TREP]). Alternatively,
+the application service could query the ALTO server by passing the
+information of the two endpoints that need to be connected, and the
+ALTO server could return a list of the top-N paths with the
+highest throughput and their expected performance.
+
+
+## Service Placement for Edge Computing
+
+Determining the proper location to deploy an application service in the
+edge cloud is critical in order to ensure a good quality of experience
+(QoE) for its users. Yet the service placement problem is known to
+be NP-Hard [JSP-INFOCOM], requiring heuristics to compute good (albeit
+suboptimal) solutions.
+
+In [G2-SIGCOMM], it is shown that Bottleneck structures can also be
+used as highly scalable network simulators to evaluate the performance
+of a network reconfiguration such as the placement of a new
+service on a edge cloud. In particular, bottleneck structures
+can very efficiently (1) compute the performance of each flow
+in the network and (2) quantify the effects of the arrival (departure) of
+new (existing) flows to (from) the network. This allows to simulate the
+full transmission of an application traffic pattern very efficiently,
+three or more orders of magnitude faster than traditional packet
+simulators.
+
+Network and application providers can use this capability in two ways:
+
+- Given a set of possible placement strategies, bottleneck structures
+can be used to simulate them in real time, helping the operator
+select the one that provides the best performance
+while guaranteeing the service level agreements (SLAs) of the other
+existing applications.
+
+- Despite the server placement problem being intractable, bottleneck
+structures provide a framework to identify good candidate solutions.
+In particular, by capturing the topology, routing, and flow information
+in a single computational graph, they can be used to efficiently explore
+directions in the feasible set that yield incrementally better
+performance.  By moving in these incremental directions, the placement
+algorithm can progress within the enormous feasible set towards the
+optimal solution.
+
+An ALTO server could help the application service provider optimize the
+placement decision by exposing the bottleneck structure of the network.
+With this information alone, the provider could compute the effect of
+placing the service in one location versus another. Alternatively,
+the application service could query the ALTO server by passing the
+information of the possible locations where it can be placed, and the
+ALTO server could return an ordered list of the locations and their
+expected performance.
 
 
 ## Training Gigantic Neural Networks onto Data Centers and Planet-Scale Networks
@@ -901,14 +991,6 @@ while preserving the performance of the existing high-priority flows.
 TODO
 
 
-
-## Service Placement for Edge Computing
-
-Determining the proper location to deploy an application service in the edge cloud is critical
-in order to ensure good users' quality of experience (QoE). Bottleneck structure can
-be used to help the application provider know where (in which location in the edge cloud) to deploy the server.
-
-TOBECOMPLETED
 
 ## 5G Network Slicing
 
@@ -1186,7 +1268,7 @@ select a few paths that comply with the application
 constraints and that are located at the higher levels of the
 bottleneck structure (since from the MBA property,
 these yield higher performance). Then using requirement R3B,
-it can query the ALTO server again to obtain the expected
+it could query the ALTO server again to obtain the expected
 performance on each of the selected paths.
 -->
 
