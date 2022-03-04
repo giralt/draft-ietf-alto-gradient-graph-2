@@ -169,6 +169,13 @@ informative:
     seriesinfo : "ACM CoNEXT"
     date : 2019
 
+  SINGULARITY :
+    title : "Singularity: Planet-Scale, Preemptive and Elastic Scheduling of AI Workloads"
+    author :
+      -
+        ins: Dharma Shukla et al
+        org: Microsoft
+
 
 --- abstract
 
@@ -543,6 +550,20 @@ level of performance. In this document, we will refer to these
 directions in the feasible set as *network reconfigurations*,
 since that's what they effectively are in the physical world.
 
+For instance, an example of network reconfiguration can be
+the action of rate limiting a flow carrying XR traffic to
+match the available bandwidth along its path with the goal
+to improve its QoE. Another example of network reconfiguration
+is the action of rerouting traffic through a new path in order
+to accelerate the transfer of a large backup data set
+between two cloud data centers. A third example can be
+the deployment of a new network slice in a 5G network in order
+to ensure the QoS of a V2X service. In each of these actions,
+the network configuration is moved along a direction
+(a gradient, if the change maximally improves
+the performance objective) within the feasible set of possible
+configurations.
+
 While derivatives describe how the performance of a network
 changes when a very small (infinitesimal) change is applied
 to its configuration, network reconfigurations can accept
@@ -833,6 +854,7 @@ digraph) exposed via the ALTO service could help unlock a richer set of
 machine learning algorithms to optimize application performance.
 
 
+
 ## Optimal Joint Congestion Control and Routing
 
 In traditional IP networks, the problems of flow routing and congestion
@@ -840,12 +862,45 @@ control are separately resolved by following a two-step process:
 first, a routing protocol is used to
 determine the path between any two nodes in a network; then, flows are
 routed according to such paths and their transmission rates are regulated
-using a congestion control algorithm (e.g., BBR [2]). This layered
+using a congestion control algorithm. This layered
 and disjoint approach is known to be scalable but suboptimal because
 the routing algorithm identifies paths without taking into account the
 flow transmission rates assigned by the congestion control algorithm.
 
-TOBECOMPLETED
+Suppose that an application is trying to launch a new flow between
+two endpoints with the goal to maximize the available
+bandwidth. One can be tempted to think that, to identify the path
+with maximal available bandwidth, it suffices to look at the current
+state of the network and find the least congested path offering
+the highest capacity. This approach, however, is naive since it does
+not take into account the fact that the placement of the new flow
+onto the network will itself create a perturbation in the network,
+potentially making the chosen path suboptimal or, even more troublesome,
+negatively affecting the performance of other priority flows.
+
+The goal of the joint routing and congestion control
+problem between two given endpoints E1 and E2 consists in finding the path
+from E1 to E2 that will yield the highest throughput *after* the flow is
+placed on the network (i.e., taking into account the effect of placing
+the flow).
+
+The solution to this problem is introduced in [G2-TREP] by employing a
+strategy that combines the strenghts of both the Dijkstra algorithm
+and the insights revealed by the bottleneck structure. The algorithm
+can both compute the optimal path and measure the overall network-wide
+impact of deploying the new flow on the path. It also enables a framework
+to identify new good-performing paths that have a limitted
+negative impact on the rest of the flows in the network.
+This allows network and application providers to identify paths that
+can both provide good performance to the newly added application flow
+while preserving the performance of the existing high-priority flows.
+
+
+## Training Gigantic Neural Networks onto Data Centers and Planet-Scale Networks
+
+TODO
+
+
 
 ## Service Placement for Edge Computing
 

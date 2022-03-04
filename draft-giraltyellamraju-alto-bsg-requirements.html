@@ -1028,7 +1028,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ros-Giralt &amp; Yellamraju</td>
-<td class="center">Expires 4 September 2022</td>
+<td class="center">Expires 5 September 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1041,12 +1041,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-giraltyellamraju-alto-bsg-requirements-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-03-03" class="published">3 March 2022</time>
+<time datetime="2022-03-04" class="published">4 March 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-09-04">4 September 2022</time></dd>
+<dd class="expires"><time datetime="2022-09-05">5 September 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1110,7 +1110,7 @@ ALTO standard.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 4 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 5 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1193,10 +1193,13 @@ ALTO standard.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-optimal-joint-congestion-co" class="xref">Optimal Joint Congestion Control and Routing</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5">
-                <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="xref">4.5</a>.  <a href="#name-service-placement-for-edge-" class="xref">Service Placement for Edge Computing</a></p>
+                <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="xref">4.5</a>.  <a href="#name-training-gigantic-neural-ne" class="xref">Training Gigantic Neural Networks onto Data Centers and Planet-Scale Networks</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.6">
-                <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="xref">4.6</a>.  <a href="#name-5g-network-slicing" class="xref">5G Network Slicing</a></p>
+                <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="xref">4.6</a>.  <a href="#name-service-placement-for-edge-" class="xref">Service Placement for Edge Computing</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.7">
+                <p id="section-toc.1-1.4.2.7.1"><a href="#section-4.7" class="xref">4.7</a>.  <a href="#name-5g-network-slicing" class="xref">5G Network Slicing</a></p>
 </li>
             </ul>
 </li>
@@ -1682,7 +1685,20 @@ feasible set that can help bring the network to a higher
 level of performance. In this document, we will refer to these
 directions in the feasible set as <em>network reconfigurations</em>,
 since that's what they effectively are in the physical world.<a href="#section-3.8-1" class="pilcrow">¶</a></p>
-<p id="section-3.8-2">While derivatives describe how the performance of a network
+<p id="section-3.8-2">For instance, an example of network reconfiguration can be
+the action of rate limiting a flow carrying XR traffic to
+match the available bandwidth along its path with the goal
+to improve its QoE. Another example of network reconfiguration
+is the action of rerouting traffic through a new path in order
+to accelerate the transfer of a large backup data set
+between two cloud data centers. A third example can be
+the deployment of a new network slice in a 5G network in order
+to ensure the QoS of a V2X service. In each of these actions,
+the network configuration is moved along a direction
+(a gradient, if the change maximally improves
+the performance objective) within the feasible set of possible
+configurations.<a href="#section-3.8-2" class="pilcrow">¶</a></p>
+<p id="section-3.8-3">While derivatives describe how the performance of a network
 changes when a very small (infinitesimal) change is applied
 to its configuration, network reconfigurations can accept
 changes to the network that are arbitrarily large. For instance,
@@ -1696,9 +1712,9 @@ to find a direction (gradient) in the feasible set, and then reconfiguring
 the network by following that direction. This process can be repeated iteratively
 until a final optimized reconfiguration is achieved. (See for example
 <span>[<a href="#G2-SIGCOMM" class="xref">G2-SIGCOMM</a>]</span> and <span>[<a href="#G2-TREP" class="xref">G2-TREP</a>]</span> for examples of algorithms using
-this technique.)<a href="#section-3.8-2" class="pilcrow">¶</a></p>
-<p id="section-3.8-3">In the next section, we summarize some of the network reconfigurations
-that can be optimized by using bottleneck structures.<a href="#section-3.8-3" class="pilcrow">¶</a></p>
+this technique.)<a href="#section-3.8-3" class="pilcrow">¶</a></p>
+<p id="section-3.8-4">In the next section, we summarize some of the network reconfigurations
+that can be optimized by using bottleneck structures.<a href="#section-3.8-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="types_reconfigurations">
@@ -2013,33 +2029,65 @@ control are separately resolved by following a two-step process:
 first, a routing protocol is used to
 determine the path between any two nodes in a network; then, flows are
 routed according to such paths and their transmission rates are regulated
-using a congestion control algorithm (e.g., BBR [2]). This layered
+using a congestion control algorithm. This layered
 and disjoint approach is known to be scalable but suboptimal because
 the routing algorithm identifies paths without taking into account the
 flow transmission rates assigned by the congestion control algorithm.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
-<p id="section-4.4-2">TOBECOMPLETED<a href="#section-4.4-2" class="pilcrow">¶</a></p>
+<p id="section-4.4-2">Suppose that an application is trying to launch a new flow between
+two endpoints with the goal to maximize the available
+bandwidth. One can be tempted to think that, to identify the path
+with maximal available bandwidth, it suffices to look at the current
+state of the network and find the least congested path offering
+the highest capacity. This approach, however, is naive since it does
+not take into account the fact that the placement of the new flow
+onto the network will itself create a perturbation in the network,
+potentially making the chosen path suboptimal or, even more troublesome,
+negatively affecting the performance of other priority flows.<a href="#section-4.4-2" class="pilcrow">¶</a></p>
+<p id="section-4.4-3">The goal of the joint routing and congestion control
+problem between two given endpoints E1 and E2 consists in finding the path
+from E1 to E2 that will yield the highest throughput <em>after</em> the flow is
+placed on the network (i.e., taking into account the effect of placing
+the flow).<a href="#section-4.4-3" class="pilcrow">¶</a></p>
+<p id="section-4.4-4">The solution to this problem is introduced in <span>[<a href="#G2-TREP" class="xref">G2-TREP</a>]</span> by employing a
+strategy that combines the strenghts of both the Dijkstra algorithm
+and the insights revealed by the bottleneck structure. The algorithm
+can both compute the optimal path and measure the overall network-wide
+impact of deploying the new flow on the path. It also enables a framework
+to identify new good-performing paths that have a limitted
+negative impact on the rest of the flows in the network.
+This allows network and application providers to identify paths that
+can both provide good performance to the newly added application flow
+while preserving the performance of the existing high-priority flows.<a href="#section-4.4-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="training-gigantic-neural-networks-onto-data-centers-and-planet-scale-networks">
+<section id="section-4.5">
+        <h3 id="name-training-gigantic-neural-ne">
+<a href="#section-4.5" class="section-number selfRef">4.5. </a><a href="#name-training-gigantic-neural-ne" class="section-name selfRef">Training Gigantic Neural Networks onto Data Centers and Planet-Scale Networks</a>
+        </h3>
+<p id="section-4.5-1">TODO<a href="#section-4.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="service-placement-for-edge-computing">
-<section id="section-4.5">
+<section id="section-4.6">
         <h3 id="name-service-placement-for-edge-">
-<a href="#section-4.5" class="section-number selfRef">4.5. </a><a href="#name-service-placement-for-edge-" class="section-name selfRef">Service Placement for Edge Computing</a>
+<a href="#section-4.6" class="section-number selfRef">4.6. </a><a href="#name-service-placement-for-edge-" class="section-name selfRef">Service Placement for Edge Computing</a>
         </h3>
-<p id="section-4.5-1">Determining the proper location to deploy an application service in the edge cloud is critical
+<p id="section-4.6-1">Determining the proper location to deploy an application service in the edge cloud is critical
 in order to ensure good users' quality of experience (QoE). Bottleneck structure can
-be used to help the application provider know where (in which location in the edge cloud) to deploy the server.<a href="#section-4.5-1" class="pilcrow">¶</a></p>
-<p id="section-4.5-2">TOBECOMPLETED<a href="#section-4.5-2" class="pilcrow">¶</a></p>
+be used to help the application provider know where (in which location in the edge cloud) to deploy the server.<a href="#section-4.6-1" class="pilcrow">¶</a></p>
+<p id="section-4.6-2">TOBECOMPLETED<a href="#section-4.6-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="g-network-slicing">
-<section id="section-4.6">
+<section id="section-4.7">
         <h3 id="name-5g-network-slicing">
-<a href="#section-4.6" class="section-number selfRef">4.6. </a><a href="#name-5g-network-slicing" class="section-name selfRef">5G Network Slicing</a>
+<a href="#section-4.7" class="section-number selfRef">4.7. </a><a href="#name-5g-network-slicing" class="section-name selfRef">5G Network Slicing</a>
         </h3>
-<p id="section-4.6-1">Bottleneck structures can also be used by network operators and application service providers to
+<p id="section-4.7-1">Bottleneck structures can also be used by network operators and application service providers to
 design optimized network slices. See <span>[<a href="#G2-SIGCOMM" class="xref">G2-SIGCOMM</a>]</span> for examples on how bottleneck structures can be used to design
-network slices in data centers.<a href="#section-4.6-1" class="pilcrow">¶</a></p>
-<p id="section-4.6-2">TOBECOMPLETED<a href="#section-4.6-2" class="pilcrow">¶</a></p>
+network slices in data centers.<a href="#section-4.7-1" class="pilcrow">¶</a></p>
+<p id="section-4.7-2">TOBECOMPLETED<a href="#section-4.7-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2522,8 +2570,12 @@ implementation of the bottleneck structure algorithm <span>[<a href="#G2-TREP" c
 <span class="refAuthor">Larry Peterson, .</span> and <span class="refAuthor">. Oguz Sunay</span>, <span class="refTitle">"5G Mobile Networks: A Systems Approach"</span>, <span class="seriesInfo">Open Networking Foundation </span>, <time datetime="2020" class="refDate">2020</time>. </dd>
 <dd class="break"></dd>
 <dt id="SH-SIGCOMM">[SH-SIGCOMM]</dt>
-      <dd>
+        <dd>
 <span class="refTitle">"Cost-effective capacity provisioning in wide area networks with Shoofly"</span>, <span class="seriesInfo">ACM SIGCOMM </span>, <time datetime="2021" class="refDate">2021</time>. </dd>
+<dd class="break"></dd>
+<dt id="SINGULARITY">[SINGULARITY]</dt>
+      <dd>
+<span class="refAuthor">Dharma Shukla et al, .</span>, <span class="refTitle">"Singularity: Planet-Scale, Preemptive and Elastic Scheduling of AI Workloads"</span>, <span>n.d.</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
