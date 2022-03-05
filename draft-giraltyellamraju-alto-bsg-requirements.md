@@ -51,6 +51,7 @@ author:
     email: yellamra@qti.qualcomm.com
 
 normative:
+  RFC7285:
   RFC8402:
   RFC8896:
 
@@ -188,7 +189,7 @@ informative:
 --- abstract
 
 This document proposes an extension to the base Application-Layer
-Traffic Optimization (ALTO) protocol to support bottleneck structures
+Traffic Optimization (ALTO) protocol [RFC7285] to support bottleneck structures
 as an efficient representation of the state of a network.
 Bottleneck structures are efficient computational graphs that allow
 network operators and application service
@@ -346,7 +347,7 @@ bottleneck structures correctly model how perturbations in a network propagate, 
 next section.
 
 
-## Propagation Lemmas
+## Propagation Properties
 
 Under the assumption of max-min fairness [GALLAGER], QTBS demonstrates the following two properties [G2-SIGMETRICS]:
 
@@ -411,7 +412,7 @@ IP networks.
 
 Bottleneck structures also reveal that not all bottleneck links have the same
 relevancy.  In Figure 2, links at the top of the graph have a higher
-impact to the overall performance of the network than links at the
+impact on the overall performance of the network than links at the
 bottom.  For instance, consider link l1.  A variation on its
 capacity will create a ripple effect that will impact the performance
 of all the flows in the network, since all flow vertices are
@@ -606,7 +607,7 @@ rerouting an existing flow on a network can be modeled as a perturbation,
 whose impact can be efficiently measured using bottleneck structures.
 In particular, QTBS can be used to resolve the joint congestion
 control and routing optimization problem for individual
-lows (see Section 3.1 in [G2-TREP]).
+flows (see Section 3.1 in [G2-TREP]).
 
 - **Traffic shaping**. Traffic shaping a flow corresponds to the action
 of taking a derivative with respect to the rate of the flow. Bottleneck
@@ -1210,10 +1211,17 @@ a network optimization math library.
 The next requirement focuses on the type of bottleneck structure
 an ALTO server must compute:
 
-- Requirement 1B (R1B). The ALTO server MUST support the computation
-of at least one bottleneck structure type from {{types_bs}}. It is
-also RECOMMENDED that the ALTO server implements at least the path
-gradient graph (PGG).
+- Requirement 1B (R1B). The ALTO server MUST at least support
+the computation of one bottleneck structure type from {{types_bs}}.
+Depending on the network information available (e.g., presence of QoS
+class information), the ALTO server MAY support all the three
+bottleneck structure types, in which case the ALTO client MAY
+be able to choose the bottleneck structure type for retrieval.
+Also, it is RECOMMENDED that the ALTO server supports the
+computation of the path gradient graph (PGG)
+as the default bottleneck structure implementation for retrieval
+by the ALTO clients.
+
 
 ## Requirement 2: Information Received from the Network
 

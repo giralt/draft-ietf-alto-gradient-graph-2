@@ -9,7 +9,7 @@
 <meta content="Sruthi Yellamraju" name="author">
 <meta content="
        This document proposes an extension to the base Application-Layer
-Traffic Optimization (ALTO) protocol to support bottleneck structures
+Traffic Optimization (ALTO) protocol   to support bottleneck structures
 as an efficient representation of the state of a network.
 Bottleneck structures are efficient computational graphs that allow
 network operators and application service
@@ -1028,7 +1028,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ros-Giralt &amp; Yellamraju</td>
-<td class="center">Expires 6 September 2022</td>
+<td class="center">Expires 7 September 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1041,12 +1041,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-giraltyellamraju-alto-bsg-requirements-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-03-05" class="published">5 March 2022</time>
+<time datetime="2022-03-06" class="published">6 March 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-09-06">6 September 2022</time></dd>
+<dd class="expires"><time datetime="2022-09-07">7 September 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1064,7 +1064,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">This document proposes an extension to the base Application-Layer
-Traffic Optimization (ALTO) protocol to support bottleneck structures
+Traffic Optimization (ALTO) protocol <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> to support bottleneck structures
 as an efficient representation of the state of a network.
 Bottleneck structures are efficient computational graphs that allow
 network operators and application service
@@ -1110,7 +1110,7 @@ ALTO standard.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 6 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 7 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1152,7 +1152,7 @@ ALTO standard.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-example-of-bottleneck-struc" class="xref">Example of Bottleneck Structure</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
-                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-propagation-lemmas" class="xref">Propagation Lemmas</a></p>
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-propagation-properties" class="xref">Propagation Properties</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-forces-of-interaction-among" class="xref">Forces of Interaction among Flows and Links</a></p>
@@ -1438,10 +1438,10 @@ bottleneck structures correctly model how perturbations in a network propagate, 
 next section.<a href="#section-3.1-8" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="propagation-lemmas">
+<div id="propagation-properties">
 <section id="section-3.2">
-        <h3 id="name-propagation-lemmas">
-<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-propagation-lemmas" class="section-name selfRef">Propagation Lemmas</a>
+        <h3 id="name-propagation-properties">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-propagation-properties" class="section-name selfRef">Propagation Properties</a>
         </h3>
 <p id="section-3.2-1">Under the assumption of max-min fairness <span>[<a href="#GALLAGER" class="xref">GALLAGER</a>]</span>, QTBS demonstrates the following two properties <span>[<a href="#G2-SIGMETRICS" class="xref">G2-SIGMETRICS</a>]</span>:<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
@@ -1520,7 +1520,7 @@ IP networks.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
         </h3>
 <p id="section-3.5-1">Bottleneck structures also reveal that not all bottleneck links have the same
 relevancy.  In Figure 2, links at the top of the graph have a higher
-impact to the overall performance of the network than links at the
+impact on the overall performance of the network than links at the
 bottom.  For instance, consider link l1.  A variation on its
 capacity will create a ripple effect that will impact the performance
 of all the flows in the network, since all flow vertices are
@@ -1736,7 +1736,7 @@ rerouting an existing flow on a network can be modeled as a perturbation,
 whose impact can be efficiently measured using bottleneck structures.
 In particular, QTBS can be used to resolve the joint congestion
 control and routing optimization problem for individual
-lows (see Section 3.1 in <span>[<a href="#G2-TREP" class="xref">G2-TREP</a>]</span>).<a href="#section-3.9-2.1" class="pilcrow">¶</a>
+flows (see Section 3.1 in <span>[<a href="#G2-TREP" class="xref">G2-TREP</a>]</span>).<a href="#section-3.9-2.1" class="pilcrow">¶</a>
 </li>
           <li class="normal" id="section-3.9-2.2">
             <strong>Traffic shaping</strong>. Traffic shaping a flow corresponds to the action
@@ -2379,10 +2379,16 @@ a network optimization math library.<a href="#section-5.2-4.2" class="pilcrow">�
 <p id="section-5.2-5">The next requirement focuses on the type of bottleneck structure
 an ALTO server must compute:<a href="#section-5.2-5" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.2-6.1">Requirement 1B (R1B). The ALTO server <span class="bcp14">MUST</span> support the computation
-of at least one bottleneck structure type from <a href="#types_bs" class="xref">Section 3.7</a>. It is
-also <span class="bcp14">RECOMMENDED</span> that the ALTO server implements at least the path
-gradient graph (PGG).<a href="#section-5.2-6.1" class="pilcrow">¶</a>
+<li class="normal" id="section-5.2-6.1">Requirement 1B (R1B). The ALTO server <span class="bcp14">MUST</span> at least support
+the computation of one bottleneck structure type from <a href="#types_bs" class="xref">Section 3.7</a>.
+Depending on the network information available (e.g., presence of QoS
+class information), the ALTO server <span class="bcp14">MAY</span> support all the three
+bottleneck structure types, in which case the ALTO client <span class="bcp14">MAY</span>
+be able to choose the bottleneck structure type for retrieval.
+Also, it is <span class="bcp14">RECOMMENDED</span> that the ALTO server supports the
+computation of the path gradient graph (PGG)
+as the default bottleneck structure implementation for retrieval
+by the ALTO clients.<a href="#section-5.2-6.1" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
@@ -2579,6 +2585,10 @@ implementation of the bottleneck structure algorithm <span>[<a href="#G2-TREP" c
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7285">[RFC7285]</dt>
+        <dd>
+<span class="refAuthor">Alimi, R., Ed.</span>, <span class="refAuthor">Penno, R., Ed.</span>, <span class="refAuthor">Yang, Y., Ed.</span>, <span class="refAuthor">Kiesel, S.</span>, <span class="refAuthor">Previdi, S.</span>, <span class="refAuthor">Roome, W.</span>, <span class="refAuthor">Shalunov, S.</span>, and <span class="refAuthor">R. Woundy</span>, <span class="refTitle">"Application-Layer Traffic Optimization (ALTO) Protocol"</span>, <span class="seriesInfo">RFC 7285</span>, <span class="seriesInfo">DOI 10.17487/RFC7285</span>, <time datetime="2014-09" class="refDate">September 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7285">https://www.rfc-editor.org/rfc/rfc7285</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
         <dd>
