@@ -19,7 +19,8 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "Supporting Bottleneck Structure Graphs in ALTO: Use Cases and Requirements"
+title: "Supporting Bottleneck Structure Graphs in ALTO:
+Use Cases and Requirements"
 category: info
 
 docname: draft-giraltyellamraju-alto-bsg-requirements-latest
@@ -243,7 +244,7 @@ each other. QTBS builds the bottleneck structure by assuming that
 flows in a network aim at maximizing throughput while ensuring
 fairness. This general principle holds for all the relevant
 congestion control algorithms used in IP networks
-(e.g., TCP Cubic, BBR, Quic, etc.).
+(e.g., TCP Cubic, BBR, QUIC, etc.).
 
 ## Example of Bottleneck Structure {#bs_example}
 
@@ -337,7 +338,12 @@ The bottleneck structure is interpreted as follows:
 
 For instance, in {{fgg}} we have that flow f3 is bottlenecked at link l1 (since there is a directed edge from
 l1 to f3) and it traverses links l1 and l2 (since there is a directed edge from f3 to l1 and from f3
-to l2).
+to l2). Note that when a flow is bottlenecked at a link, then the edge connecting them in the bottleneck
+structure must necessarily be bidirectional. This is because a flow that is bottlenecked at a link,
+must necessarily traverse that link too. Indeed, in {{fgg}} we can see that all the directed edges
+from a link to a flow, are in fact bidirectional edges. This is important to ensure that
+bottleneck structures correctly model how perturbations in a network propagate, as we explain in the
+next section.
 
 
 ## Propagation Lemmas
@@ -943,7 +949,7 @@ highest throughput and their expected performance.
 ## Service Placement for Edge Computing
 
 Determining the proper location to deploy an application service in the
-edge cloud is critical in order to ensure a good quality of experience
+edge cloud is critical to ensure a good quality of experience
 (QoE) for its users. Yet the service placement problem is known to
 be NP-Hard [JSP-INFOCOM], requiring heuristics to compute good (albeit
 suboptimal) solutions.
@@ -1045,7 +1051,9 @@ a total of 48 flows. All links are assumed to have a capacity of
 which are configured at 25 Gbps.
 
 The next Figure presents the bottleneck structure of Google's B4 network
-with the assumed flow configuration. (See [G2-SC], [G2-TREP] for details
+with the assumed flow configuration.
+Please see {{bs_example}} for a description of how to interpret the
+bottleneck structure. (See also [G2-SC], [G2-TREP] for details
 on the algorithm used to compute the bottleneck structure.)
 
        +--------+    +--------+
@@ -1088,7 +1096,8 @@ on the algorithm used to compute the bottleneck structure.)
        +------+    +-------+       +-------+   +-------+
 {: #b4fgg title="Bottleneck structure of Google's B4 network example." }
 
-For the sake of compactness, {{b4fgg}} only includes the bottleneck links
+For the sake of compactness,
+{{b4fgg}} only includes the bottleneck links
 and a subset of the flow vertices that are part of the complete bottleneck
 structure. In particular, out of the 19 links that are part of B4,
 six links (l15, l7, l8, l10, l5, l3) are bottlenecks.
