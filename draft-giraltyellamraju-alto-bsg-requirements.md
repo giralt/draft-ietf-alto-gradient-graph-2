@@ -799,9 +799,17 @@ bottleneck structure reaching flow f5 via two paths:
 
     l1 -> f2 -> l3 -> f4 -> l4 -> f5
 
-Using the link and flow equations ({{quantifying}}), each path simply flips the
+Using the link and flow equations ({{quantifying}}),
+each path simply flips the
 sign of the perturbation every time a link vertex is
-traversed. When reaching vertex f5, we find that each path
+traversed. (The reason why the sign is flipped at each link vertex
+is explained by the link and flow equations that dictate how perturbations
+propagate through the bottleneck structure. Further mathematical
+descriptions to explain this effect are outside the scope of this
+document. For detailed mathematical derivations and additional
+examples, please see [G2-TREP]).
+
+When reaching vertex f5, we find that each path
 contributes 1 unit of bandwidth. Thus we have:
 
     -dr5/d_r1 = 1 + 1 = 2
@@ -1009,7 +1017,7 @@ TOBECOMPLETED
 
 # Requirements
 
-This section provides an illustrative example of how an application can benefit from the BSG
+This section starts with an illustrative example of how an application can benefit from the BSG
 service defined in this document. From this example, we then provide a discussion on the requirements
 to integrate the BSG service into the ALTO standard.
 

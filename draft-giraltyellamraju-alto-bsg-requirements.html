@@ -1951,16 +1951,23 @@ l1 -&gt; f2 -&gt; l2 -&gt; f3 -&gt; l4 -&gt; f5
 l1 -&gt; f2 -&gt; l3 -&gt; f4 -&gt; l4 -&gt; f5
 </pre><a href="#section-4.2-8" class="pilcrow">¶</a>
 </div>
-<p id="section-4.2-9">Using the link and flow equations (<a href="#quantifying" class="xref">Section 3.6</a>), each path simply flips the
+<p id="section-4.2-9">Using the link and flow equations (<a href="#quantifying" class="xref">Section 3.6</a>),
+each path simply flips the
 sign of the perturbation every time a link vertex is
-traversed. When reaching vertex f5, we find that each path
-contributes 1 unit of bandwidth. Thus we have:<a href="#section-4.2-9" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-4.2-10">
+traversed. (The reason why the sign is flipped at each link vertex
+is explained by the link and flow equations that dictate how perturbations
+propagate through the bottleneck structure. Further mathematical
+descriptions to explain this effect are outside the scope of this
+document. For detailed mathematical derivations and additional
+examples, please see <span>[<a href="#G2-TREP" class="xref">G2-TREP</a>]</span>).<a href="#section-4.2-9" class="pilcrow">¶</a></p>
+<p id="section-4.2-10">When reaching vertex f5, we find that each path
+contributes 1 unit of bandwidth. Thus we have:<a href="#section-4.2-10" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-4.2-11">
 <pre>
 -dr5/d_r1 = 1 + 1 = 2
-</pre><a href="#section-4.2-10" class="pilcrow">¶</a>
+</pre><a href="#section-4.2-11" class="pilcrow">¶</a>
 </div>
-<p id="section-4.2-11">In fact, it can be seen that this derivative is maximal. That
+<p id="section-4.2-12">In fact, it can be seen that this derivative is maximal. That
 is, traffic shaping any other flow would yield a smaller
 increase in the rate of f5. Thus, an operator can conclude
 that traffic shaping flow f1 yields an optimal strategy
@@ -1968,15 +1975,15 @@ to maximally accelerate the rate of flow f5. Note also that
 in this case, there is a positive multiplier effect, since
 reducing flow f1's rate by 1 unit, leads to an increase
 on flow f5's rate by more than 1 unit.
-This is known as a power gradient <span>[<a href="#G2-SIGCOMM" class="xref">G2-SIGCOMM</a>]</span>.<a href="#section-4.2-11" class="pilcrow">¶</a></p>
-<p id="section-4.2-12">While left outside the scope
+This is known as a power gradient <span>[<a href="#G2-SIGCOMM" class="xref">G2-SIGCOMM</a>]</span>.<a href="#section-4.2-12" class="pilcrow">¶</a></p>
+<p id="section-4.2-13">While left outside the scope
 of this document, bottleneck structures can also be used
 to efficiently compute the value of the optimal traffic
 shaper (i.e., in our example, to find by how much we should
 traffic shape flow f1) and to quantify the impact on the
 flow being accelerated. This information can also be used by
-the application to estimate the flow's completion time.<a href="#section-4.2-12" class="pilcrow">¶</a></p>
-<p id="section-4.2-13">An ALTO server could help the application service provider identify
+the application to estimate the flow's completion time.<a href="#section-4.2-13" class="pilcrow">¶</a></p>
+<p id="section-4.2-14">An ALTO server could help the application service provider identify
 an optimized traffic shaping strategy by exposing the bottleneck
 structure of the network. With this information alone, the
 provider could efficiently compute an optimized set of traffic
@@ -1984,7 +1991,7 @@ shapers. Alternatively, the application service could query the
 ALTO server by passing the set of flows that are allowed
 to be traffic shaped and the flow that needs to be accelerated,
 and the ALTO server could return the set of recommended
-traffic shapers.<a href="#section-4.2-13" class="pilcrow">¶</a></p>
+traffic shapers.<a href="#section-4.2-14" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="application-performance-optimization-through-ai-modeling">
@@ -2172,7 +2179,7 @@ network slices in data centers.<a href="#section-4.7-1" class="pilcrow">¶</a></
       <h2 id="name-requirements">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-requirements" class="section-name selfRef">Requirements</a>
       </h2>
-<p id="section-5-1">This section provides an illustrative example of how an application can benefit from the BSG
+<p id="section-5-1">This section starts with an illustrative example of how an application can benefit from the BSG
 service defined in this document. From this example, we then provide a discussion on the requirements
 to integrate the BSG service into the ALTO standard.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <div id="req_example">
