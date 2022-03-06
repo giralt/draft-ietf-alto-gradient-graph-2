@@ -677,7 +677,7 @@ a purely optical path. These are also known in the literature
 as path shortcuts [SH-SIGCOMM].
 
 
-# ALTO Bottleneck Structure Service Use Cases
+# ALTO Bottleneck Structure Service Use Cases {#use_cases}
 
 Applications of bottleneck structure analysis expand through
 a broad class of optimization problems that include traffic
@@ -904,7 +904,7 @@ structures. The application would then query the ALTO server
 to obtain the predicted value.
 
 
-## Optimal Joint Congestion Control and Routing
+## Optimal Joint Routing and Congestion Control {#joint_use_case}
 
 In traditional IP networks, the problems of flow routing and congestion
 control are separately resolved by following a two-step process:
@@ -1015,16 +1015,22 @@ network slices in data centers.
 
 TOBECOMPLETED
 
-# Requirements
+# Example of Application Layer Traffic Optimization using Bottleneck Structures {#req_example}
 
-This section starts with an illustrative example of how an application can benefit from the BSG
-service defined in this document. From this example, we then provide a discussion on the requirements
-to integrate the BSG service into the ALTO standard.
+In this section we provide an example illustrating how bottleneck
+structures can be used to optimize application performance. This
+example will then be referenced in {{requirements}} to discuss and
+introduce the necessary requirements to integrate the BSG service
+into the ALTO standard. It is worth noticing that, as shown in
+{{use_cases}}, bottleneck structures have numerous applications.
+This section provides a complete example for just one of the use
+cases. In particular, the focus of the next example is on the
+joint routing and congestion control use case {{joint_use_case}}.
 
-## Example of Network-Aware Application using the Bottleneck Structure Graph {#req_example}
-
-{{b4}} provides a view of Google's B4 network as presented in [B4-SIGCOMM], providing connectivity to twelve
-data centers distributed across the world (two in Asia, six in America and four in Europe).
+{{b4}} provides a view of Google's B4 network as presented in
+[B4-SIGCOMM], providing connectivity to twelve
+data centers distributed across the world (two in Asia, six
+in America and four in Europe).
 
         +-----+   +-----+  +-----+  +-----+   +------+    +------+
         |     |   |     |  |     |  |     |   |      |    |      |
@@ -1181,6 +1187,12 @@ can make better informed decisions on how to route a flow. In
 the next sections, we will use this example to support a discussion
 on the requirements for integrating the Bottleneck Structure Graph
 (BSG) service into the ALTO standard.
+
+
+# Requirements {#requirements}
+
+This section provides a discussion on the necessary requirements
+to integrate the BSG service into the ALTO standard.
 
 ## Requirement 1: Bottleneck Structure Graph (BSG) Abstraction
 
