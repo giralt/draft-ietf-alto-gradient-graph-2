@@ -1028,7 +1028,7 @@ cases. In particular, the focus of the next example is on the
 joint routing and congestion control use case {{joint_use_case}}.
 
 {{b4}} provides a view of Google's B4 network as presented in
-[B4-SIGCOMM], providing connectivity to twelve
+[B4-SIGCOMM], providing connectivity to 12
 data centers distributed across the world (two in Asia, six
 in America and four in Europe).
 
@@ -1053,7 +1053,24 @@ in America and four in Europe).
           Asia                 America                 Europe
 {: #b4 title="A subset of Google's B4 network introduced in [B4-SIGCOMM]." }
 
-XXX add table links to dc pairs
+The 12 data centeres are connected via a total of 19 links, labeled
+l1, l2, ... l19. {{b4_links}} presents the pair of data centers that
+each link is connected to.
+
+| Link      | Adjacent data centers | Link      | Adjacent data centers |
+|----------:|:----------------------|----------:|:----------------------|
+| l1        | DC1, DC2              | l11       | DC, DC              |
+| l2        | DC1, DC3              | l12       | DC, DC              |
+| l3        | DC3, DC4              | l13       | DC, DC              |
+| l4        | DC2, DC5              | l14       | DC, DC              |
+| l5        | DC3, DC6              | l15       | DC, DC              |
+| l6        | DC6, DC7              | l16       | DC, DC              |
+| l7        | DC7, DC8              | l17       | DC, DC              |
+| l8        | DC8, DC10             | l18       | DC, DC              |
+| l9        | DC9, DC10             | l19       | DC, DC              |
+| l10       | DC7, DC11             |           |                     |
+{: #b4_links title="Link connectivity in the B4 network." }
+
 
 For the sake of illustration, we will assume a simple configuration
 consisting of a pair of flows
