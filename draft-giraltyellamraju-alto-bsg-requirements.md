@@ -1006,7 +1006,6 @@ expected performance.
 TODO
 
 
-
 ## 5G Network Slicing
 
 Bottleneck structures can also be used by network operators and application service providers to
@@ -1015,7 +1014,7 @@ network slices in data centers.
 
 TOBECOMPLETED
 
-# Example of Application Layer Traffic Optimization using Bottleneck Structures {#req_example}
+# Example: Application Layer Traffic Optimization using Bottleneck Structures {#req_example}
 
 In this section we provide an example illustrating how bottleneck
 structures can be used to optimize application performance. This
@@ -1378,6 +1377,9 @@ with about 100 routers and 500 links.
 Thus, the above requirement should be achievable with a good
 implementation of the bottleneck structure algorithm [G2-TREP].
 
+
+<!--
+
 # Bottleneck Structure Graph Extension: Overview
 
 TODO
@@ -1402,13 +1404,24 @@ TODO
 
 TODO
 
+-->
+
 # Security Considerations
 
-TODO
+Future versions of this document may extend the base ALTO
+protocol, so the Security Considerations [RFC7285] of the
+base ALTO protocol fully apply when this extension is
+provided by an ALTO server.
+
+TOBECOMPLETED
 
 # IANA Considerations
 
-TODO
+Future versions of this document could register new entries
+to the ALTO Cost Metric Registry, the ALTO Cost Mode Registry,
+the ALTO Domain Entity Type Registry and the
+ALTO Entity Property Type Registry.
+
 
 --- back
 
