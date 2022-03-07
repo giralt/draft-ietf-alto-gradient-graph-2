@@ -180,7 +180,7 @@ informative:
 
 
   LORENZ:
-    title : Does the flap of a butterfly’s wings in Brazil set off a tornado in Texas?
+    title : Does the flap of a butterfly's wings in Brazil set off a tornado in Texas?
     seriesinfo : American Association for the Advancement of Science, 139th Meeting
     author :
       -
@@ -243,7 +243,7 @@ informative:
     date : 2021
 
   FLOWDIR :
-    title : "Steering Hyper-Giants’ Traffic at Scale"
+    title : "Steering Hyper-Giants' Traffic at Scale"
     author :
       -
         ins: E. Pujol
@@ -314,7 +314,7 @@ informative:
 --- abstract
 
 This document proposes an extension to the base Application-Layer
-Traffic Optimization (ALTO) protocol [RFC7285] to support bottleneck structures
+Traffic Optimization (ALTO) protocol to support bottleneck structures
 as an efficient representation of the state of a network.
 Bottleneck structures are efficient computational graphs that allow
 network operators and application service
@@ -482,7 +482,7 @@ of a flow f' if and only if the bottleneck structure has a directed path from fl
 - **Property 2. Link perturbation**. An infinitesimal change in the capacity of a link l will have an effect on the transmission rate
 of a flow f' if and only if the bottleneck structure has a directed path from link l to flow f.
 
-The above two properties qualitatively relate to the classic question in chaos theory: Can the flap of a butterfly’s wings
+The above two properties qualitatively relate to the classic question in chaos theory: Can the flap of a butterfly's wings
 in Brazil set off a tornado in Texas? [LORENZ] Obviously a butterfly alone cannot create a tornado, but every element
 is interconnected in a distributed system, and even the flap of a butterfly's wings in Brazil will have an effect in Texas.
 Bottleneck structures are graphs that characterize and quantify such type of effects in a communication network.
