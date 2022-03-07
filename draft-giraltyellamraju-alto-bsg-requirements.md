@@ -1059,16 +1059,16 @@ each link is connected to.
 
 | Link      | Adjacent data centers | Link      | Adjacent data centers |
 |----------:|:----------------------|----------:|:----------------------|
-| l1        | DC1, DC2              | l11       | DC, DC              |
-| l2        | DC1, DC3              | l12       | DC, DC              |
-| l3        | DC3, DC4              | l13       | DC, DC              |
-| l4        | DC2, DC5              | l14       | DC, DC              |
-| l5        | DC3, DC6              | l15       | DC, DC              |
-| l6        | DC6, DC7              | l16       | DC, DC              |
-| l7        | DC7, DC8              | l17       | DC, DC              |
-| l8        | DC8, DC10             | l18       | DC, DC              |
-| l9        | DC9, DC10             | l19       | DC, DC              |
-| l10       | DC7, DC11             |           |                     |
+| l1        | DC1, DC2              | l11       | DC10, DC12            |
+| l2        | DC1, DC3              | l12       | DC4, DC5              |
+| l3        | DC3, DC4              | l13       | DC5, DC6              |
+| l4        | DC2, DC5              | l14       | DC11, DC12            |
+| l5        | DC3, DC6              | l15       | DC4, DC7              |
+| l6        | DC6, DC7              | l16       | DC4, DC8              |
+| l7        | DC7, DC8              | l17       | DC7, DC8              |
+| l8        | DC8, DC10             | l18       | DC9, DC11             |
+| l9        | DC9, DC10             | l19       | DC10, DC11            |
+| l10       | DC7, DC11             |           |                       |
 {: #b4_links title="Link connectivity in the B4 network." }
 
 
