@@ -1125,6 +1125,7 @@ information of the possible locations where it can be placed, and the
 ALTO server could return an ordered list of the locations and their
 expected performance.
 
+<!--
 
 ## Training Gigantic Neural Networks onto Data Centers and Planet-Scale Networks
 
@@ -1138,6 +1139,8 @@ design optimized network slices. See [G2-SIGCOMM] for examples on how bottleneck
 network slices in data centers.
 
 TOBECOMPLETED
+
+-->
 
 # Example: Application Layer Traffic Optimization using Bottleneck Structures {#req_example}
 
