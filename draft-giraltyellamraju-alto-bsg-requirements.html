@@ -7,6 +7,10 @@
 <title>Supporting Bottleneck Structure Graphs in ALTO: Use Cases and Requirements</title>
 <meta content="Jordi Ros-Giralt" name="author">
 <meta content="Sruthi Yellamraju" name="author">
+<meta content="Qin Wu" name="author">
+<meta content="Luis Miguel Contreras" name="author">
+<meta content="Richard Yang" name="author">
+<meta content="Kai Gao" name="author">
 <meta content="
        This document proposes an extension to the base Application-Layer
 Traffic Optimization (ALTO) protocol   to support bottleneck structures
@@ -1027,7 +1031,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <td class="right">March 2022</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Ros-Giralt &amp; Yellamraju</td>
+<td class="left">Ros-Giralt, et al.</td>
 <td class="center">Expires 8 September 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
@@ -1056,6 +1060,22 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <div class="author">
       <div class="author-name">S. Yellamraju</div>
 <div class="org">Qualcomm</div>
+</div>
+<div class="author">
+      <div class="author-name">Q. Wu</div>
+<div class="org">Huawei</div>
+</div>
+<div class="author">
+      <div class="author-name">L.M. Contreras</div>
+<div class="org">Telefonica</div>
+</div>
+<div class="author">
+      <div class="author-name">R. Yang</div>
+<div class="org">Yale University</div>
+</div>
+<div class="author">
+      <div class="author-name">K. Gao</div>
+<div class="org">Sichuan University</div>
 </div>
 </dd>
 </dl>
@@ -1241,10 +1261,7 @@ ALTO standard.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#appendix-A" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#appendix-B" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.10.1"><a href="#appendix-A" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1694,7 +1711,7 @@ is a network reconfiguration that is not infinitesimal.
 We note that bottleneck structures can also be used to compute
 optimized network reconfigurations consisting of non-infinitesimal
 changes in the network. This can be done by first computing
-derivatives using the bottleneck structure    <br>
+derivatives using the bottleneck structure
 to find a direction (gradient) in the feasible set, and then reconfiguring
 the network by following that direction. This process can be repeated iteratively
 until a final optimized reconfiguration is achieved. (See for example
@@ -2595,9 +2612,65 @@ implementation of the bottleneck structure algorithm <span>[<a href="#G2-TREP" c
       </h2>
 <p id="section-7-1">Future versions of this document may extend the base ALTO
 protocol, so the Security Considerations <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> of the
-base ALTO protocol fully apply when this extension is
-provided by an ALTO server.<a href="#section-7-1" class="pilcrow">¶</a></p>
-<p id="section-7-2">TOBECOMPLETED<a href="#section-7-2" class="pilcrow">¶</a></p>
+base ALTO protocol fully apply when this proposed extension
+is provided by an ALTO server.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-7-2">The Bottleneck Structure Graph extension requires additional scrutiny
+on three security considerations discussed in the base protocol:
+confidentiality of ALTO information (Section 15.3 of <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>),
+potential undesirable guidance from authenticated ALTO information
+(Section 15.2 of <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>), and availability of ALTO service
+(Section 15.5 of <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>).<a href="#section-7-2" class="pilcrow">¶</a></p>
+<p id="section-7-3">For confidentiality of ALTO information, a network operator should be
+aware that this extension may introduce a new risk:
+As the Bottleneck Structure information may reveal more fine-grained
+internal network structures than the base protocol, an attacker may
+identify the bottleneck link and start a distributed denial-of-service
+(DDoS) attack involving minimal flows to conduct in-network
+congestion. Given the potential risk of leaking sensitive
+information, the BSG extension is mainly applicable in
+scenarios where:<a href="#section-7-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-7-4.1">The properties of the Bottleneck Structure Graph
+do not impose security risks to the ALTO service provider, e.g., by
+not carrying sensitive information.<a href="#section-7-4.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-7-4.2">The ALTO server and client have
+established a reliable trust relationship, for example, operated in
+the same administrative domain, or managed by business partners with
+legal contracts and proper authentication and privacy protocols.<a href="#section-7-4.2" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-7-4.3">The ALTO server implements protection mechanisms to reduce
+information exposure or obfuscate the real
+information. Implementations involving reduction or
+obfuscation of the Bottleneck Structure information <span class="bcp14">SHOULD</span> consider
+reduction/obfuscation mechanisms that can preserve the integrity of
+ALTO information, for example, by using minimal feasible region
+compression algorithms <span>[<a href="#NOVA" class="xref">NOVA</a>]</span> or obfuscation protocols
+<span><a href="#MERCATOR" class="xref">RESA</a> [<a href="#MERCATOR" class="xref">MERCATOR</a>]</span>. We note that these obfuscation methods are
+experimental and their practical applicability to
+the generic capability provided by this extension is not fully
+assessed.<a href="#section-7-4.3" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="section-7-5">For undesirable guidance, the ALTO server must be aware that,
+if information reduction/obfuscation methods are implemented,
+they may lead to potential misleading information from
+Authenticated ALTO Information. In such cases, the Protection
+Strategies described in Section 15.2.2 of <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> <span class="bcp14">MUST</span> be considered.<a href="#section-7-5" class="pilcrow">¶</a></p>
+<p id="section-7-6">For availability of ALTO service, an ALTO server should be cognizant
+that using Bottleneck Structures might have a new risk: frequently
+querying the BSG service might consume intolerable amounts of
+computation and storage on the server side.
+For example, if an ALTO server implementation dynamically computes
+the Bottleneck Structure for each request, the BSG service
+may become an entry point for denial-of-service attacks on the
+availability of an ALTO server.<a href="#section-7-6" class="pilcrow">¶</a></p>
+<p id="section-7-7">To mitigate this risk, an ALTO server may consider using
+optimizations such as precomputation-and-projection mechanisms
+<span>[<a href="#MERCATOR" class="xref">MERCATOR</a>]</span> to reduce the overhead for processing each query.
+An ALTO server may also protect itself from malicious clients by
+monitoring the behaviors of clients and stopping serving clients with
+suspicious behaviors (e.g., sending requests at a high frequency).<a href="#section-7-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
@@ -2605,7 +2678,7 @@ provided by an ALTO server.<a href="#section-7-1" class="pilcrow">¶</a></p>
       <h2 id="name-iana-considerations">
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-8-1">Future versions of this document could register new entries
+<p id="section-8-1">Future versions of this document may register new entries
 to the ALTO Cost Metric Registry, the ALTO Cost Mode Registry,
 the ALTO Domain Entity Type Registry and the
 ALTO Entity Property Type Registry.<a href="#section-8-1" class="pilcrow">¶</a></p>
@@ -2649,7 +2722,7 @@ ALTO Entity Property Type Registry.<a href="#section-8-1" class="pilcrow">¶</a>
 <dl class="references">
 <dt id="B4-SIGCOMM">[B4-SIGCOMM]</dt>
         <dd>
-<span class="refTitle">"B4: Experience with a Globally-Deployed Software Defined WAN"</span>, <span class="seriesInfo">ACM SIGCOMM </span>, <time datetime="2013" class="refDate">2013</time>. </dd>
+<span class="refAuthor">Jain et al, S.</span>, <span class="refTitle">"B4: Experience with a Globally-Deployed Software Defined WAN"</span>, <span class="seriesInfo">ACM SIGCOMM </span>, <time datetime="2013" class="refDate">2013</time>. </dd>
 <dd class="break"></dd>
 <dt id="BE-ONL">[BE-ONL]</dt>
         <dd>
@@ -2657,69 +2730,65 @@ ALTO Entity Property Type Registry.<a href="#section-8-1" class="pilcrow">¶</a>
 <dd class="break"></dd>
 <dt id="BE-SIGCOMM">[BE-SIGCOMM]</dt>
         <dd>
-<span class="refTitle">"BwE: Flexible, Hierarchical Bandwidth Allocation for WAN Distributed Computing"</span>, <span class="seriesInfo">ACM SIGCOMM </span>, <time datetime="2015" class="refDate">2015</time>. </dd>
+<span class="refAuthor">Kumar et al, A.</span>, <span class="refTitle">"BwE: Flexible, Hierarchical Bandwidth Allocation for WAN Distributed Computing"</span>, <span class="seriesInfo">ACM SIGCOMM </span>, <time datetime="2015" class="refDate">2015</time>. </dd>
 <dd class="break"></dd>
 <dt id="FLOWDIR">[FLOWDIR]</dt>
         <dd>
-<span class="refAuthor">Enric Pujol, .</span>, <span class="refAuthor">Ingmar Poese, .</span>, <span class="refAuthor">Johannes Zerwas, .</span>, <span class="refAuthor">Georgios Smaragdakis, .</span>, and <span class="refAuthor">. Anja Feldmann</span>, <span class="refTitle">"Steering Hyper-Giants’ Traffic at Scale"</span>, <span class="seriesInfo">ACM CoNEXT </span>, <time datetime="2019" class="refDate">2019</time>. </dd>
+<span class="refAuthor">Pujol, E.</span>, <span class="refAuthor">Poese, I.</span>, <span class="refAuthor">Zerwas, J.</span>, <span class="refAuthor">Smaragdakis, G.</span>, and <span class="refAuthor">A. Feldmann</span>, <span class="refTitle">"Steering Hyper-Giants’ Traffic at Scale"</span>, <span class="seriesInfo">ACM CoNEXT </span>, <time datetime="2019" class="refDate">2019</time>. </dd>
 <dd class="break"></dd>
 <dt id="G2-SC">[G2-SC]</dt>
         <dd>
-<span class="refAuthor">Noah Amsel, Jordi Ros-Giralt, Sruthi Yellamraju etc, .</span>, <span class="refTitle">"Computing Bottleneck Structures at Scale for High-Precision Network Performance Analysis"</span>, <span class="seriesInfo">IEEE International Workshop on Innovating the Network for Data Intensive Science (INDIS), Supercomputing </span>, <span>n.d.</span>. </dd>
+<span class="refAuthor">Amsel, N.</span>, <span class="refAuthor">Ros-Giralt, J.</span>, <span class="refAuthor">Yellamraju, S.</span>, <span class="refAuthor">von Hoffe, B.</span>, and <span class="refAuthor">R. Lethin</span>, <span class="refTitle">"Computing Bottleneck Structures at Scale for High-Precision Network Performance Analysis"</span>, <span class="seriesInfo">IEEE International Workshop on Innovating the Network for Data Intensive Science (INDIS), Supercomputing </span>, <time datetime="2020" class="refDate">2020</time>. </dd>
 <dd class="break"></dd>
 <dt id="G2-SIGCOMM">[G2-SIGCOMM]</dt>
         <dd>
-<span class="refAuthor">Ros-Giralt, Noah Amsel, Sruthi Yellamraju etc, J.</span>, <span class="refTitle">"Designing data center networks using bottleneck structures"</span>, <span class="seriesInfo">ACM SIGCOMM </span>, <span>n.d.</span>. </dd>
+<span class="refAuthor">Ros-Giralt, J.</span>, <span class="refAuthor">Amsel, N.</span>, <span class="refAuthor">Yellamraju, S.</span>, <span class="refAuthor">Ezick, J.</span>, <span class="refAuthor">Lethin, R.</span>, <span class="refAuthor">Jiang, Y.</span>, <span class="refAuthor">Feng, A.</span>, <span class="refAuthor">Tassiulas, L.</span>, <span class="refAuthor">Wu, Z.</span>, and <span class="refAuthor">K. Bergman</span>, <span class="refTitle">"Designing data center networks using bottleneck structures"</span>, <span class="seriesInfo">ACM SIGCOMM </span>, <time datetime="2021" class="refDate">2021</time>. </dd>
 <dd class="break"></dd>
 <dt id="G2-SIGMETRICS">[G2-SIGMETRICS]</dt>
         <dd>
-<span class="refAuthor">Ros-Giralt, Noah Amsel, Sruthi Yellamraju etc, J.</span>, <span class="refTitle">"On the Bottleneck Structure of Congestion-Controlled Networks"</span>, <span class="seriesInfo">ACM SIGMETRICS </span>, <span>n.d.</span>. </dd>
+<span class="refAuthor">Ros-Giralt, J.</span>, <span class="refAuthor">Bohara, A.</span>, <span class="refAuthor">Yellamraju, S.</span>, <span class="refAuthor">Langston, H.</span>, <span class="refAuthor">Lethin, R.</span>, <span class="refAuthor">Jiang, Y.</span>, <span class="refAuthor">Tassiulas, L.</span>, <span class="refAuthor">Li, J.</span>, <span class="refAuthor">Tan, Y.</span>, and <span class="refAuthor">M. Veeraraghavan</span>, <span class="refTitle">"On the Bottleneck Structure of Congestion-Controlled Networks"</span>, <span class="seriesInfo">ACM SIGMETRICS </span>, <time datetime="2020" class="refDate">2020</time>. </dd>
 <dd class="break"></dd>
 <dt id="G2-TREP">[G2-TREP]</dt>
         <dd>
-<span class="refAuthor">Ros-Giralt, Noah Amsel, Sruthi Yellamraju etc, J.</span>, <span class="refTitle">"A Quantitative Theory of Bottleneck Structures for Data Networks"</span>, <span>n.d.</span>. </dd>
+<span class="refAuthor">Ros-Giralt, J.</span>, <span class="refAuthor">Amsel, N.</span>, <span class="refAuthor">Yellamraju, S.</span>, <span class="refAuthor">Ezick, J.</span>, <span class="refAuthor">Lethin, R.</span>, <span class="refAuthor">Jiang, Y.</span>, <span class="refAuthor">Feng, A.</span>, <span class="refAuthor">Tassiulas, L.</span>, <span class="refAuthor">Wu, Z.</span>, and <span class="refAuthor">K. Bergman</span>, <span class="refTitle">"A Quantitative Theory of Bottleneck Structures for Data Networks"</span>, <span class="seriesInfo">Reservoir Labs (Qualcomm) Technical Report </span>, <time datetime="2021" class="refDate">2021</time>. </dd>
 <dd class="break"></dd>
 <dt id="GALLAGER">[GALLAGER]</dt>
         <dd>
-<span class="refAuthor">Robert Gallager and Dimitri Bertsekas, .</span>, <span class="refTitle">"Data Networks"</span>, <span>n.d.</span>. </dd>
+<span class="refAuthor">Gallager, R.</span> and <span class="refAuthor">D. Bertsekas</span>, <span class="refTitle">"Data Networks"</span>, <time datetime="1992" class="refDate">1992</time>. </dd>
 <dd class="break"></dd>
 <dt id="JSP-INFOCOM">[JSP-INFOCOM]</dt>
         <dd>
-<span class="refAuthor">Konstantinos Poularakis, .</span>, <span class="refTitle">"Joint Service Placement and Request Routing in Multi-cell Mobile Edge Computing Networks"</span>, <span>n.d.</span>. </dd>
+<span class="refAuthor">Poularakis et al, D.</span>, <span class="refTitle">"Joint Service Placement and Request Routing in Multi-cell Mobile Edge Computing Networks"</span>, <span>n.d.</span>. </dd>
 <dd class="break"></dd>
 <dt id="LORENZ">[LORENZ]</dt>
         <dd>
-<span class="refAuthor">Edward N Lorenz, .</span>, <span class="refTitle">"Does the flap of a butterfly’s wings in Brazil set off a tornado in Texas?"</span>, <span class="seriesInfo">American Association for the Advancement of Science, 139th Meeting </span>, <time datetime="1972" class="refDate">1972</time>. </dd>
+<span class="refAuthor">Lorenz, E.</span>, <span class="refTitle">"Does the flap of a butterfly’s wings in Brazil set off a tornado in Texas?"</span>, <span class="seriesInfo">American Association for the Advancement of Science, 139th Meeting </span>, <time datetime="1972" class="refDate">1972</time>. </dd>
+<dd class="break"></dd>
+<dt id="MERCATOR">[MERCATOR]</dt>
+        <dd>
+<span class="refAuthor">Xiang, Q.</span>, <span class="refAuthor">Zhang, J.</span>, <span class="refAuthor">Wang, X.</span>, <span class="refAuthor">Guok, C.</span>, <span class="refAuthor">Le, F.</span>, <span class="refAuthor">MacAuley, J.</span>, <span class="refAuthor">Newman, H.</span>, and <span class="refAuthor">Y. Yang</span>, <span class="refTitle">"Toward Fine- Grained, Privacy-Preserving, Efficient Multi-Domain Network Resource Discovery"</span>, <span class="seriesInfo">IEEE/ACM IEEE/ACM IEEE Journal on Selected Areas of Communication 37(8): 1924-1940</span>, <time datetime="2019" class="refDate">2019</time>, <span>&lt;<a href="https://doi.org/10.1109/JSAC.2019.2927073">https://doi.org/10.1109/JSAC.2019.2927073</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="MMSYS">[MMSYS]</dt>
         <dd>
 <span class="refTitle">"Bandwidth Estimation for Real-Time Communications"</span>, <time datetime="2021" class="refDate">2021</time>, <span>&lt;<a href="https://2021.acmmmsys.org/rtc_challenge.php">https://2021.acmmmsys.org/rtc_challenge.php</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="NOVA">[NOVA]</dt>
+        <dd>
+<span class="refAuthor">Gao, K.</span>, <span class="refAuthor">Xiang, Q.</span>, <span class="refAuthor">Wang, X.</span>, <span class="refAuthor">Yang, Y.</span>, and <span class="refAuthor">J. Bi</span>, <span class="refTitle">"An objective-driven on-demand network abstraction for adaptive applications"</span>, <span class="seriesInfo">IEEE/ACM IEEE/ACM Transactions on Networking (TON) Vol 27, no. 2 (2019): 805-818.</span>, <time datetime="2019" class="refDate">2019</time>, <span>&lt;<a href="https://doi.org/10.1109/IWQoS.2017.7969117">https://doi.org/10.1109/IWQoS.2017.7969117</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="PETERSON">[PETERSON]</dt>
         <dd>
-<span class="refAuthor">Larry Peterson, .</span> and <span class="refAuthor">. Oguz Sunay</span>, <span class="refTitle">"5G Mobile Networks: A Systems Approach"</span>, <span class="seriesInfo">Open Networking Foundation </span>, <time datetime="2020" class="refDate">2020</time>. </dd>
+<span class="refAuthor">Peterson, L.</span> and <span class="refAuthor">O. Sunay</span>, <span class="refTitle">"5G Mobile Networks: A Systems Approach"</span>, <span class="seriesInfo">Open Networking Foundation </span>, <time datetime="2020" class="refDate">2020</time>. </dd>
 <dd class="break"></dd>
 <dt id="SH-SIGCOMM">[SH-SIGCOMM]</dt>
-        <dd>
-<span class="refTitle">"Cost-effective capacity provisioning in wide area networks with Shoofly"</span>, <span class="seriesInfo">ACM SIGCOMM </span>, <time datetime="2021" class="refDate">2021</time>. </dd>
-<dd class="break"></dd>
-<dt id="SINGULARITY">[SINGULARITY]</dt>
       <dd>
-<span class="refAuthor">Dharma Shukla et al, .</span>, <span class="refTitle">"Singularity: Planet-Scale, Preemptive and Elastic Scheduling of AI Workloads"</span>, <span>n.d.</span>. </dd>
+<span class="refAuthor">Singh et al, R.</span>, <span class="refTitle">"Cost-effective capacity provisioning in wide area networks with Shoofly"</span>, <span class="seriesInfo">ACM SIGCOMM </span>, <time datetime="2021" class="refDate">2021</time>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
 </section>
-<div id="acknowledgments">
-<section id="appendix-A">
-      <h2 id="name-acknowledgments">
-<a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
-      </h2>
-<p id="appendix-A-1">TODO acknowledge.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
-</section>
-</div>
 <div id="authors-addresses">
-<section id="appendix-B">
+<section id="appendix-A">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
@@ -2737,6 +2806,38 @@ ALTO Entity Property Type Registry.<a href="#section-8-1" class="pilcrow">¶</a>
 <div class="email">
 <span>Email:</span>
 <a href="mailto:yellamra@qti.qualcomm.com" class="email">yellamra@qti.qualcomm.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Qin Wu</span></div>
+<div dir="auto" class="left"><span class="org">Huawei</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:bill.wu@huawei.com" class="email">bill.wu@huawei.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Luis Miguel Contreras</span></div>
+<div dir="auto" class="left"><span class="org">Telefonica</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:luismiguel.contrerasmurillo@telefonica.com" class="email">luismiguel.contrerasmurillo@telefonica.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Richard Yang</span></div>
+<div dir="auto" class="left"><span class="org">Yale University</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:yry@cs.yale.edu" class="email">yry@cs.yale.edu</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Kai Gao</span></div>
+<div dir="auto" class="left"><span class="org">Sichuan University</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:kaigao@scu.edu.cn" class="email">kaigao@scu.edu.cn</a>
 </div>
 </address>
 </section>

@@ -49,6 +49,23 @@ author:
     name: Sruthi Yellamraju
     organization: Qualcomm
     email: yellamra@qti.qualcomm.com
+ -
+    name: Qin Wu
+    organization: Huawei
+    email: bill.wu@huawei.com
+ -
+    name: Luis Miguel Contreras
+    organization: Telefonica
+    email: luismiguel.contrerasmurillo@telefonica.com
+ -
+    name: Richard Yang
+    organization: Yale University
+    email: yry@cs.yale.edu
+ -
+    name: Kai Gao
+    organization: Sichuan University
+    email: kaigao@scu.edu.cn
+
 
 normative:
   RFC7285:
@@ -58,59 +75,132 @@ normative:
 informative:
 
   G2-SIGMETRICS:
-    title : "On the Bottleneck Structure of Congestion-Controlled Networks"
-    seriesinfo : "ACM SIGMETRICS"
+    title : On the Bottleneck Structure of Congestion-Controlled Networks
+    seriesinfo : ACM SIGMETRICS
     author:
       -
-        ins: J. Ros-Giralt, Noah Amsel, Sruthi Yellamraju etc.
+        ins: J. Ros-Giralt
         name: Jordi Ros-Giralt
-        org: Reservoir Labs
+        org: Reservoir Labs / Qualcomm
+      -
+        ins: A. Bohara
+      -
+        ins: S. Yellamraju
+      -
+        ins: H. Langston
+      -
+        ins: R. Lethin
+      -
+        ins: Y. Jiang
+      -
+        ins: L. Tassiulas
+      -
+        ins: J. Li
+      -
+        ins: Y. Tan
+      -
+        ins: M. Veeraraghavan
+    date: 2020
 
   G2-SIGCOMM:
-    title : "Designing data center networks using bottleneck structures"
-    seriesinfo : "ACM SIGCOMM"
+    title : Designing data center networks using bottleneck structures
+    seriesinfo : ACM SIGCOMM
     author:
       -
-        ins: J. Ros-Giralt, Noah Amsel, Sruthi Yellamraju etc.
+        ins: J. Ros-Giralt
         name: Jordi Ros-Giralt
         org: Reservoir Labs
+      -
+        ins: N. Amsel
+      -
+        ins: S. Yellamraju
+      -
+        ins: J. Ezick
+      -
+        ins: R. Lethin
+      -
+        ins: Y. Jiang
+      -
+        ins: A. Feng
+      -
+        ins: L. Tassiulas
+      -
+        ins: Z. Wu
+      -
+        ins: K. Bergman
+    date: 2021
+
 
   G2-TREP:
-    title : "A Quantitative Theory of Bottleneck Structures for Data Networks"
+    title : A Quantitative Theory of Bottleneck Structures for Data Networks
+    seriesinfo : Reservoir Labs (Qualcomm) Technical Report
     author:
       -
-        ins: J. Ros-Giralt, Noah Amsel, Sruthi Yellamraju etc.
+        ins: J. Ros-Giralt
         name: Jordi Ros-Giralt
         org: Reservoir Labs
+      -
+        ins: N. Amsel
+      -
+        ins: S. Yellamraju
+      -
+        ins: J. Ezick
+      -
+        ins: R. Lethin
+      -
+        ins: Y. Jiang
+      -
+        ins: A. Feng
+      -
+        ins: L. Tassiulas
+      -
+        ins: Z. Wu
+      -
+        ins: K. Bergman
+    date: 2021
+
 
   G2-SC:
-    title : "Computing Bottleneck Structures at Scale for High-Precision Network Performance Analysis"
-    seriesinfo : "IEEE International Workshop on Innovating the Network for Data Intensive Science (INDIS), Supercomputing"
+    title : Computing Bottleneck Structures at Scale for High-Precision Network Performance Analysis
+    seriesinfo : IEEE International Workshop on Innovating the Network for Data Intensive Science (INDIS), Supercomputing
     author:
       -
-        ins: Noah Amsel, Jordi Ros-Giralt, Sruthi Yellamraju etc.
-        name: Jordi Ros-Giralt
+        ins: N. Amsel
+        name: Noah Amsel
         org: Reservoir Labs
+      -
+        ins: J. Ros-Giralt
+      -
+        ins: S. Yellamraju
+      -
+        ins: B. von Hoffe
+      -
+        ins: R. Lethin
+    date: 2020
+
 
   LORENZ:
-    title : "Does the flap of a butterfly’s wings in Brazil set off a tornado in Texas?"
-    seriesinfo : "American Association for the Advancement of Science, 139th Meeting"
+    title : Does the flap of a butterfly’s wings in Brazil set off a tornado in Texas?
+    seriesinfo : American Association for the Advancement of Science, 139th Meeting
     author :
       -
-        ins: Edward N Lorenz
+        ins: E. Lorenz
     date : 1972
 
   GALLAGER:
     title : "Data Networks"
+    date: 1992
     author :
       -
-        ins: "Robert Gallager and Dimitri Bertsekas"
+        ins: R. Gallager
+      -
+        ins: D. Bertsekas
 
   B4-SIGCOMM :
     title : "B4: Experience with a Globally-Deployed Software Defined WAN"
     author :
       -
-        ins:
+        ins: S. Jain et al
     date : 2013
     seriesinfo : "ACM SIGCOMM"
 
@@ -118,7 +208,7 @@ informative:
     title : "BwE: Flexible, Hierarchical Bandwidth Allocation for WAN Distributed Computing"
     author :
       -
-        ins:
+        ins: A. Kumar et al
     date : 2015
     seriesinfo : "ACM SIGCOMM"
 
@@ -126,7 +216,7 @@ informative:
     title : "Cost-effective capacity provisioning in wide area networks with Shoofly"
     author :
       -
-        ins:
+        ins: R. Singh et al
     date : 2021
     seriesinfo : "ACM SIGCOMM"
 
@@ -134,9 +224,9 @@ informative:
     title : "5G Mobile Networks: A Systems Approach"
     author :
       -
-        ins: Larry Peterson
+        ins: L. Peterson
       -
-        ins: Oguz Sunay
+        ins: O. Sunay
     date : 2020
     seriesinfo : "Open Networking Foundation"
 
@@ -156,34 +246,69 @@ informative:
     title : "Steering Hyper-Giants’ Traffic at Scale"
     author :
       -
-        ins: Enric Pujol
+        ins: E. Pujol
         name: Enric Pujol
         org: BENOCS
       -
-        ins: Ingmar Poese
-        org: BENOCS
+        ins: I. Poese
       -
-        ins: Johannes Zerwas
+        ins: J. Zerwas
       -
-        ins: Georgios Smaragdakis
+        ins: G. Smaragdakis
       -
-        ins: Anja Feldmann
+        ins: A. Feldmann
     seriesinfo : "ACM CoNEXT"
     date : 2019
-
-  SINGULARITY :
-    title : "Singularity: Planet-Scale, Preemptive and Elastic Scheduling of AI Workloads"
-    author :
-      -
-        ins: Dharma Shukla et al
-        org: Microsoft
 
   JSP-INFOCOM :
     title : "Joint Service Placement and Request Routing in Multi-cell Mobile Edge Computing Networks"
     author :
       -
-        ins: Konstantinos Poularakis
+        ins: D. Poularakis et al
         org: Yale University
+
+  NOVA:
+    title : An objective-driven on-demand network abstraction for adaptive applications
+    seriesinfo :
+      IEEE/ACM: "IEEE/ACM Transactions on Networking (TON) Vol 27, no. 2 (2019): 805-818."
+    target : https://doi.org/10.1109/IWQoS.2017.7969117
+    author :
+      -
+        ins: K. Gao
+      -
+        ins: Q. Xiang
+      -
+        ins: X. Wang
+      -
+        ins: Y. Yang
+      -
+        ins: J. Bi
+    date: 2019
+
+  MERCATOR:
+    title : Toward Fine- Grained, Privacy-Preserving, Efficient Multi-Domain Network Resource Discovery
+    seriesinfo :
+      IEEE/ACM:  "IEEE/ACM IEEE Journal on Selected Areas of Communication 37(8): 1924-1940"
+    target : https://doi.org/10.1109/JSAC.2019.2927073
+    date : 2019
+    author :
+      -
+        ins: Q. Xiang
+      -
+        ins: J. Zhang
+      -
+        ins: X. Wang
+      -
+        ins: C. Guok
+      -
+        ins: F. Le
+      -
+        ins: J. MacAuley
+      -
+        ins: H. Newman
+      -
+        ins: Y. Yang
+
 
 
 --- abstract
@@ -587,7 +712,7 @@ is a network reconfiguration that is not infinitesimal.
 We note that bottleneck structures can also be used to compute
 optimized network reconfigurations consisting of non-infinitesimal
 changes in the network. This can be done by first computing
-derivatives using the bottleneck structure 	
+derivatives using the bottleneck structure
 to find a direction (gradient) in the feasible set, and then reconfiguring
 the network by following that direction. This process can be repeated iteratively
 until a final optimized reconfiguration is achieved. (See for example
@@ -1410,14 +1535,73 @@ TODO
 
 Future versions of this document may extend the base ALTO
 protocol, so the Security Considerations [RFC7285] of the
-base ALTO protocol fully apply when this extension is
-provided by an ALTO server.
+base ALTO protocol fully apply when this proposed extension
+is provided by an ALTO server.
 
-TOBECOMPLETED
+The Bottleneck Structure Graph extension requires additional scrutiny
+on three security considerations discussed in the base protocol:
+confidentiality of ALTO information (Section 15.3 of [RFC7285]),
+potential undesirable guidance from authenticated ALTO information
+(Section 15.2 of [RFC7285]), and availability of ALTO service
+(Section 15.5 of [RFC7285]).
+
+For confidentiality of ALTO information, a network operator should be
+aware that this extension may introduce a new risk:
+As the Bottleneck Structure information may reveal more fine-grained
+internal network structures than the base protocol, an attacker may
+identify the bottleneck link and start a distributed denial-of-service
+(DDoS) attack involving minimal flows to conduct in-network
+congestion. Given the potential risk of leaking sensitive
+information, the BSG extension is mainly applicable in
+scenarios where:
+
+- The properties of the Bottleneck Structure Graph
+do not impose security risks to the ALTO service provider, e.g., by
+not carrying sensitive information.
+
+- The ALTO server and client have
+established a reliable trust relationship, for example, operated in
+the same administrative domain, or managed by business partners with
+legal contracts and proper authentication and privacy protocols.
+
+- The ALTO server implements protection mechanisms to reduce
+information exposure or obfuscate the real
+information. Implementations involving reduction or
+obfuscation of the Bottleneck Structure information SHOULD consider
+reduction/obfuscation mechanisms that can preserve the integrity of
+ALTO information, for example, by using minimal feasible region
+compression algorithms [NOVA] or obfuscation protocols
+[RESA][MERCATOR]. We note that these obfuscation methods are
+experimental and their practical applicability to
+the generic capability provided by this extension is not fully
+assessed.
+
+For undesirable guidance, the ALTO server must be aware that,
+if information reduction/obfuscation methods are implemented,
+they may lead to potential misleading information from
+Authenticated ALTO Information. In such cases, the Protection
+Strategies described in Section 15.2.2 of [RFC7285] MUST be considered.
+
+For availability of ALTO service, an ALTO server should be cognizant
+that using Bottleneck Structures might have a new risk: frequently
+querying the BSG service might consume intolerable amounts of
+computation and storage on the server side.
+For example, if an ALTO server implementation dynamically computes
+the Bottleneck Structure for each request, the BSG service
+may become an entry point for denial-of-service attacks on the
+availability of an ALTO server.
+
+To mitigate this risk, an ALTO server may consider using
+optimizations such as precomputation-and-projection mechanisms
+[MERCATOR] to reduce the overhead for processing each query.
+An ALTO server may also protect itself from malicious clients by
+monitoring the behaviors of clients and stopping serving clients with
+suspicious behaviors (e.g., sending requests at a high frequency).
+
 
 # IANA Considerations
 
-Future versions of this document could register new entries
+Future versions of this document may register new entries
 to the ALTO Cost Metric Registry, the ALTO Cost Mode Registry,
 the ALTO Domain Entity Type Registry and the
 ALTO Entity Property Type Registry.
@@ -1425,7 +1609,9 @@ ALTO Entity Property Type Registry.
 
 --- back
 
+<!--
 # Acknowledgments
 {:numbered="false"}
 
 TODO acknowledge.
+-->
