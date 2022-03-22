@@ -71,6 +71,8 @@ normative:
   RFC7285:
   RFC8402:
   RFC8896:
+  I-D.ietf-alto-path-vector:
+  I-D.ietf-alto-performance-metrics:
 
 informative:
 
@@ -309,6 +311,30 @@ informative:
       -
         ins: Y. Yang
 
+  SINGULARITY-MSFT :
+    title : "Singularity: Planet-Scale, Preemptive and Elastic Scheduling of AI Workloads"
+    target : https://arxiv.org/pdf/2202.07848.pdf
+    author :
+      -
+        ins: D. Shukla et al
+        org: Microsoft
+
+  TOPOOPT-MIT :
+    title : "TOPOOPT: Optimizing the Network Topology for Distributed DNN Training"
+    target : https://arxiv.org/pdf/2202.00433.pdf
+    author :
+      -
+        ins: W. Wang et al
+        org: MIT, Facebook, CMU, Telescent
+
+  FLEXFLOW-STFORD :
+    title : "Beyond Data And Model Parallelism For Deep Neural Networks"
+    target : https://arxiv.org/pdf/1807.05358.pdf[
+    author :
+      -
+        ins: Z. Jia et al
+        org: Stanford
+
 
 
 --- abstract
@@ -546,11 +572,21 @@ contrast, link l3 has a much smaller impact on the overall
 performance of the network, since a variation of its capacity will
 affect flow f5, but have no impact on any of the other flows.  This
 information is valuable to network operators and application service
-providers as it can be used to make traffic engineering decisions.
-For instance, in edge computing, an operator could choose to place a
-containerized service (e.g., for extended reality, XR) on compute nodes that would
-yield communication paths traversing bottleneck links with lower
-impact on the overall performance of the network.
+providers as it can be used to make informed network optimization
+decisions. For instance, in edge computing, an operator could choose
+to place a containerized service (e.g., for extended reality, XR)
+on compute nodes that would yield communication paths traversing
+bottleneck links with lower impact on the overall performance of
+the network (See the use case in {{placement_use_case}} for more
+details). Similarly, in network slicing (or capacity planning
+in general), operators could choose to allocate more bandwidth on
+those links that are more influential (i.e., those links that
+are at lower levels in the bottleneck structure)
+according to the expected traffic pattern in the network slice.
+<!--
+TOBEUNCOMMENTED
+(See the use case in {{slicing}} for more details).
+-->
 
 Overall, bottleneck structures provide a mechanism to rank bottleneck
 links according to their impact on the overall performance of the network.
@@ -672,7 +708,7 @@ bottleneck structures are significantly smaller and faster to
 process than an FGG, and it is often the case that the operator
 does not need to know flow-level information in order to
 make proper application performance optimization decisions.
-Note also that the PGG and Q-PGG provide the additional
+Note also that the PGG and the Q-PGG provide the additional
 security advantage of hiding flow-level information
 from the graph. This can be important to operators that are
 sensitive about security and privacy.
@@ -899,7 +935,7 @@ structure shown in {{flowaccel}}.
                 |  f5  |
                 |      |
                 +------+
-{: #flowaccel title="Reducing the rate of flow f1 maximally accelerates flow f5" }
+{: #flowaccel title="Reducing the rate of flow f1 maximally accelerates flow f5." }
 
 Suppose our goal is to accelerate flow f5. To achieve this objective,
 we will also assume that we are allowed to traffic shape (reduce) the
@@ -1029,7 +1065,7 @@ structures. The application would then query the ALTO server
 to obtain the predicted value.
 
 
-## Optimal Joint Routing and Congestion Control {#joint_use_case}
+## Optimized Joint Routing and Congestion Control {#joint_use_case}
 
 In traditional IP networks, the problems of flow routing and congestion
 control are separately resolved by following a two-step process:
@@ -1080,7 +1116,7 @@ ALTO server could return a list of the top-N paths with the
 highest throughput and their expected performance.
 
 
-## Service Placement for Edge Computing
+## Service Placement for Edge Computing {#placement_use_case}
 
 Determining the proper location to deploy an application service in the
 edge cloud is critical to ensure a good quality of experience
@@ -1125,22 +1161,112 @@ information of the possible locations where it can be placed, and the
 ALTO server could return an ordered list of the locations and their
 expected performance.
 
+
+## Training Neural Networks and AI Inference for Edge Clouds, Data Centers and Planet-Scale Networks
+
+Neural network training and inference using distributed computing
+systems are the subject of intense research and one of the leading
+target applications in today's communication networks.
+{{TOPOOPT-MIT}} {{FLEXFLOW-STFORD}} {{SINGULARITY-MSFT}}. To illustrate
+this use case, we will focus our discussion on three types of
+networks: edge clouds, data centers and planet-scale networks.
+
+5G and Edge Clouds enable for the first time the ability
+to provide intelligence at the edge of the network. This capability
+is disruptive in that humans and machines will have access to
+unprecedented compute power to perform AI inference in real time.
+For instance, using augmented reality (AR), humans will be able to
+make better informed decisions as they navigate through an environment
+by leveraging AI-inference on video and audio signals captured
+in real time from their user equipments (UEs).
+Similarly, machines such as vehicles
+or factory robots will be able to use AI inference to optimize their
+actions.
+
+Two resources are needed to perform inference:
+(1) Input data from the environment (e.g., image and
+audio signals captured from a video camera) and (2) compute
+(typically in the form of GPUs and CPUs). The input data needs to be
+transmitted from the location where it is captured (e.g., a micro-camera
+running on a human's glasses) to the location where it is to be
+processed for inference. The transmission of the input data requires
+communication resources, whereas the inference process requires
+computing resources. Since computing resources in the edge
+cloud ({{mec}}) are distributed across the user equipment (UE),
+the radio unit (RU), the distributed unit (DU) and the central unit
+(CU) [PETERSON], the problem of efficiently performing AI-inference is
+one of optimizing the trade-off communication-compute as follows:
+compute (communication) power is more scarce (abundant) if the
+inference is performed closer to the UE, and more abundant (scarce)
+if performed closer to the CU. For instance, if an AR application
+running on a UE needs to perform an inference task at a time when the
+communication path from the RU to the DU is highly congested,
+then it will have an incentive to perform such a task directly
+in the UE or in the RU. If instead the network offers an uncongested
+path to the DU and the CU, it will
+have an incentive to run the inference task on these other
+nodes since they offer more compute power.
+
+       +------+       +------+       +------+       +------+
+       |      |       |      |       |      |       |      |
+       |  UE  +-------+  RU  +-------+  DU  +-------+  CU  +
+       |      |       |      |       |      |       |      |
+       +------+  Air  +------+       +------+       +------+
+              Interface      Fronthaul       Backhaul
+{: #mec title="An AI-inference application in the
+edge cloud needs to place the inference task on a
+compute node location (UE, RU, DU or CU) that will
+perform well from both a compute and a communication
+standpoint."}
+
+Using ALTO path vector {{I-D.ietf-alto-path-vector}} and performance
+metrics {{I-D.ietf-alto-performance-metrics}} features,
+the application could retrieve
+the amount of compute resources located in the RU, DU and CU.
+By extending ALTO to support bottleneck structures, the application
+would also be able to estimate in real-time the available
+bandwidth for the paths UE-RU, UE-RU-DU, and UE-RU-DU-CU.
+Further, using bottleneck structure methods described in [G2-SIGCOMM],
+the application would be able to estimate the time to complete
+the inference task for each of the four possible scenarios (running in
+the UE, the RU, the DU or, or the CU) and choose the
+configuration with the fastest execution.
+
+Similar joint compute-communication optimization problems appear when
+performing neural network training in large-scale data centers.
+Large-scale data centers with millions
+of compute nodes are used to train gigantic neural networks (with
+potentially trillions of parameters). Such a massive task needs
+to be broken down into smaller subtasks that are then executed on
+the nodes. Once again, compute and communication need to
+be jointly optimized (see {{TOPOOPT-MIT}} and {{FLEXFLOW-STFORD}})
+in order to ensure regions in the network don't become bottlenecks.
+By exposing bottleneck structure information using ALTO, the
+AI-training application can make better subtask placement decisions
+that avoid potential network bottlenecks.
+
+Finally, AI-training using planet-scale networks generalizes
+the same joint compute and communication problem to an Internet level
+[SINGULARITY-MSFT], with the need to implement a global
+scheduler that is responsible for placing workloads
+onto clusters of globally-distributed compute nodes.
+Here too enabling better network state visibility using ALTO
+and bottleneck structure graphs could help the scheduler make
+better task placement decisions.
+
+
 <!--
 
-## Training Gigantic Neural Networks onto Data Centers and Planet-Scale Networks
+## 5G Network Slicing {#slicing}
 
-TODO
-
-
-## 5G Network Slicing
-
-Bottleneck structures can also be used by network operators and application service providers to
-design optimized network slices. See [G2-SIGCOMM] for examples on how bottleneck structures can be used to design
-network slices in data centers.
+Bottleneck structures can also be used by network operators and
+application service providers to design optimized network slices.
+See [G2-SIGCOMM] for examples on how bottleneck structures can be
+used to design network slices in data centers.
 
 TOBECOMPLETED
-
 -->
+
 
 # Example: Application Layer Traffic Optimization using Bottleneck Structures {#req_example}
 
@@ -1178,25 +1304,26 @@ in America and four in Europe).
 
         |-----|   |-----------------------|   |-----------------|
           Asia                 America                 Europe
-{: #b4 title="A subset of Google's B4 network introduced in [B4-SIGCOMM]." }
+{: #b4 title="Google's B4 network introduced in [B4-SIGCOMM]." }
 
 The 12 data centeres are connected via a total of 19 links, labeled
 l1, l2, ... l19. {{b4_links}} presents the pair of data centers that
 each link is connected to.
 
-| Link      | Adjacent data centers | Link      | Adjacent data centers |
-|----------:|:----------------------|----------:|:----------------------|
-| l1        | DC1, DC2              | l11       | DC10, DC12            |
-| l2        | DC1, DC3              | l12       | DC4, DC5              |
-| l3        | DC3, DC4              | l13       | DC5, DC6              |
-| l4        | DC2, DC5              | l14       | DC11, DC12            |
-| l5        | DC3, DC6              | l15       | DC4, DC7              |
-| l6        | DC6, DC7              | l16       | DC4, DC8              |
-| l7        | DC7, DC8              | l17       | DC7, DC8              |
-| l8        | DC8, DC10             | l18       | DC9, DC11             |
-| l9        | DC9, DC10             | l19       | DC10, DC11            |
-| l10       | DC7, DC11             |           |                       |
-{: #b4_links title="Link connectivity in the B4 network." }
+| Link     | Adjacent data centers | Link    | Adjacent data centers |
+|---------:|:----------------------|--------:|:----------------------|
+| l1       | DC1, DC2              | l11     | DC10, DC12            |
+| l2       | DC1, DC3              | l12     | DC4, DC5              |
+| l3       | DC3, DC4              | l13     | DC5, DC6              |
+| l4       | DC2, DC5              | l14     | DC11, DC12            |
+| l5       | DC3, DC6              | l15     | DC4, DC7              |
+| l6       | DC6, DC7              | l16     | DC4, DC8              |
+| l7       | DC7, DC8              | l17     | DC7, DC8              |
+| l8       | DC8, DC10             | l18     | DC9, DC11             |
+| l9       | DC9, DC10             | l19     | DC10, DC11            |
+| l10      | DC7, DC11             |         |                       |
+{: #b4_links title="Link connectivity (adjacency matrix) in the B4
+network." }
 
 
 For the sake of illustration, we will assume a simple configuration
@@ -1246,8 +1373,8 @@ on the algorithm used to compute the bottleneck structure.)
          |   |         |   |
          |   |         |   +-----------------------+
          |   |         |                           |
-         |   +---------|-----------------+         |
-         |             |                 |         |
+         |   +---------|---------------+           |
+         |             |               |           |
        +-v----+    +---v---+       +---v---+   +---v---+
        |      |    |       |       |       |   |       |
        |  f6  |    |   f9  |       |  f23  |   |  f18  | (...)
@@ -1296,10 +1423,10 @@ by the performance of link l8.
 -->
 
 Suppose now that an application needs to place a new flow on Google's
-B4 network to transfer a large data set from data center 4 (DC4)
-to data center 11 (DC11). The application needs to select and
+B4 network to transfer a large data set from data center 11 (DC11)
+to data center 4 (DC4). The application needs to select and
 configure a path
-from DC4 to DC11 (for instance, this could be done by using
+from DC11 to DC4 (for instance, this could be done by using
 SR {{RFC8402}}). The shortest path DC11 -> l10 ->
 DC7 -> l15 -> DC4 is often used as the default option.
 Doing so, however, implies that the flow will be bottlenecked at
@@ -1537,16 +1664,16 @@ TODO
 # Security Considerations
 
 Future versions of this document may extend the base ALTO
-protocol, so the Security Considerations [RFC7285] of the
+protocol, so the Security Considerations {{RFC7285}} of the
 base ALTO protocol fully apply when this proposed extension
 is provided by an ALTO server.
 
 The Bottleneck Structure Graph extension requires additional scrutiny
 on three security considerations discussed in the base protocol:
-confidentiality of ALTO information (Section 15.3 of [RFC7285]),
+Confidentiality of ALTO information (Section 15.3 of {{RFC7285}}),
 potential undesirable guidance from authenticated ALTO information
-(Section 15.2 of [RFC7285]), and availability of ALTO service
-(Section 15.5 of [RFC7285]).
+(Section 15.2 of {{RFC7285}}), and availability of ALTO service
+(Section 15.5 of {{RFC7285}}).
 
 For confidentiality of ALTO information, a network operator should be
 aware that this extension may introduce a new risk:
@@ -1579,11 +1706,18 @@ experimental and their practical applicability to
 the generic capability provided by this extension is not fully
 assessed.
 
+We note that for operators that are sensitive about disclosing
+flow-level information (even if it is anonymized), then
+they SHOULD consider using the Path Gradient Graph (PGG) or
+the QoS-Path Gradient Graph (Q-PGG) since these objects provide
+the additional security advantage of hiding flow-level
+information from the graph.
+
 For undesirable guidance, the ALTO server must be aware that,
 if information reduction/obfuscation methods are implemented,
 they may lead to potential misleading information from
 Authenticated ALTO Information. In such cases, the Protection
-Strategies described in Section 15.2.2 of [RFC7285] MUST be considered.
+Strategies described in Section 15.2.2 of {{RFC7285}} MUST be considered.
 
 For availability of ALTO service, an ALTO server should be cognizant
 that using Bottleneck Structures might have a new risk: frequently

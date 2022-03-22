@@ -39,6 +39,7 @@ ALTO standard.
     Jinja2 2.11.3
     kitchen 1.2.6
     lxml 4.7.1
+    pycairo 1.16.2
     pycountry 22.1.10
     pyflakes 2.4.0
     PyYAML 5.3.1
@@ -1032,7 +1033,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ros-Giralt, et al.</td>
-<td class="center">Expires 8 September 2022</td>
+<td class="center">Expires 23 September 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1045,12 +1046,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-giraltyellamraju-alto-bsg-requirements-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-03-07" class="published">7 March 2022</time>
+<time datetime="2022-03-22" class="published">22 March 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-09-08">8 September 2022</time></dd>
+<dd class="expires"><time datetime="2022-09-23">23 September 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1130,7 +1131,7 @@ ALTO standard.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 8 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 23 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1210,10 +1211,13 @@ ALTO standard.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-application-performance-opt" class="xref">Application Performance Optimization Through AI Modeling</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
-                <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-optimal-joint-routing-and-c" class="xref">Optimal Joint Routing and Congestion Control</a></p>
+                <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-optimized-joint-routing-and" class="xref">Optimized Joint Routing and Congestion Control</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5">
                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="xref">4.5</a>.  <a href="#name-service-placement-for-edge-" class="xref">Service Placement for Edge Computing</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.6">
+                <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="xref">4.6</a>.  <a href="#name-training-neural-networks-an" class="xref">Training Neural Networks and AI Inference for Edge Clouds, Data Centers and Planet-Scale Networks</a></p>
 </li>
             </ul>
 </li>
@@ -1522,11 +1526,17 @@ contrast, link l3 has a much smaller impact on the overall
 performance of the network, since a variation of its capacity will
 affect flow f5, but have no impact on any of the other flows.  This
 information is valuable to network operators and application service
-providers as it can be used to make traffic engineering decisions.
-For instance, in edge computing, an operator could choose to place a
-containerized service (e.g., for extended reality, XR) on compute nodes that would
-yield communication paths traversing bottleneck links with lower
-impact on the overall performance of the network.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
+providers as it can be used to make informed network optimization
+decisions. For instance, in edge computing, an operator could choose
+to place a containerized service (e.g., for extended reality, XR)
+on compute nodes that would yield communication paths traversing
+bottleneck links with lower impact on the overall performance of
+the network (See the use case in <a href="#placement_use_case" class="xref">Section 4.5</a> for more
+details). Similarly, in network slicing (or capacity planning
+in general), operators could choose to allocate more bandwidth on
+those links that are more influential (i.e., those links that
+are at lower levels in the bottleneck structure)
+according to the expected traffic pattern in the network slice.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
 <p id="section-3.5-2">Overall, bottleneck structures provide a mechanism to rank bottleneck
 links according to their impact on the overall performance of the network.
 This information can be used in a variety of optimization problems, such
@@ -1664,7 +1674,7 @@ bottleneck structures are significantly smaller and faster to
 process than an FGG, and it is often the case that the operator
 does not need to know flow-level information in order to
 make proper application performance optimization decisions.
-Note also that the PGG and Q-PGG provide the additional
+Note also that the PGG and the Q-PGG provide the additional
 security advantage of hiding flow-level information
 from the graph. This can be important to operators that are
 sensitive about security and privacy.<a href="#section-3.7-3" class="pilcrow">¶</a></p>
@@ -1915,7 +1925,7 @@ structure shown in <a href="#flowaccel" class="xref">Figure 3</a>.<a href="#sect
 </pre>
 </div>
 <figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
-<a href="#name-reducing-the-rate-of-flow-f" class="selfRef">Reducing the rate of flow f1 maximally accelerates flow f5</a>
+<a href="#name-reducing-the-rate-of-flow-f" class="selfRef">Reducing the rate of flow f1 maximally accelerates flow f5.</a>
           </figcaption></figure>
 </div>
 <p id="section-4.2-4">Suppose our goal is to accelerate flow f5. To achieve this objective,
@@ -2050,8 +2060,8 @@ to obtain the predicted value.<a href="#section-4.3-4" class="pilcrow">¶</a></p
 </div>
 <div id="joint_use_case">
 <section id="section-4.4">
-        <h3 id="name-optimal-joint-routing-and-c">
-<a href="#section-4.4" class="section-number selfRef">4.4. </a><a href="#name-optimal-joint-routing-and-c" class="section-name selfRef">Optimal Joint Routing and Congestion Control</a>
+        <h3 id="name-optimized-joint-routing-and">
+<a href="#section-4.4" class="section-number selfRef">4.4. </a><a href="#name-optimized-joint-routing-and" class="section-name selfRef">Optimized Joint Routing and Congestion Control</a>
         </h3>
 <p id="section-4.4-1">In traditional IP networks, the problems of flow routing and congestion
 control are separately resolved by following a two-step process:
@@ -2098,7 +2108,7 @@ ALTO server could return a list of the top-N paths with the
 highest throughput and their expected performance.<a href="#section-4.4-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="service-placement-for-edge-computing">
+<div id="placement_use_case">
 <section id="section-4.5">
         <h3 id="name-service-placement-for-edge-">
 <a href="#section-4.5" class="section-number selfRef">4.5. </a><a href="#name-service-placement-for-edge-" class="section-name selfRef">Service Placement for Edge Computing</a>
@@ -2146,6 +2156,101 @@ ALTO server could return an ordered list of the locations and their
 expected performance.<a href="#section-4.5-5" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="training-neural-networks-and-ai-inference-for-edge-clouds-data-centers-and-planet-scale-networks">
+<section id="section-4.6">
+        <h3 id="name-training-neural-networks-an">
+<a href="#section-4.6" class="section-number selfRef">4.6. </a><a href="#name-training-neural-networks-an" class="section-name selfRef">Training Neural Networks and AI Inference for Edge Clouds, Data Centers and Planet-Scale Networks</a>
+        </h3>
+<p id="section-4.6-1">Neural network training and inference using distributed computing
+systems are the subject of intense research and one of the leading
+target applications in today's communication networks.
+<span>[<a href="#TOPOOPT-MIT" class="xref">TOPOOPT-MIT</a>]</span> <span>[<a href="#FLEXFLOW-STFORD" class="xref">FLEXFLOW-STFORD</a>]</span> <span>[<a href="#SINGULARITY-MSFT" class="xref">SINGULARITY-MSFT</a>]</span>. To illustrate
+this use case, we will focus our discussion on three types of
+networks: edge clouds, data centers and planet-scale networks.<a href="#section-4.6-1" class="pilcrow">¶</a></p>
+<p id="section-4.6-2">5G and Edge Clouds enable for the first time the ability
+to provide intelligence at the edge of the network. This capability
+is disruptive in that humans and machines will have access to
+unprecedented compute power to perform AI inference in real time.
+For instance, using augmented reality (AR), humans will be able to
+make better informed decisions as they navigate through an environment
+by leveraging AI-inference on video and audio signals captured
+in real time from their user equipments (UEs).
+Similarly, machines such as vehicles
+or factory robots will be able to use AI inference to optimize their
+actions.<a href="#section-4.6-2" class="pilcrow">¶</a></p>
+<p id="section-4.6-3">Two resources are needed to perform inference:
+(1) Input data from the environment (e.g., image and
+audio signals captured from a video camera) and (2) compute
+(typically in the form of GPUs and CPUs). The input data needs to be
+transmitted from the location where it is captured (e.g., a micro-camera
+running on a human's glasses) to the location where it is to be
+processed for inference. The transmission of the input data requires
+communication resources, whereas the inference process requires
+computing resources. Since computing resources in the edge
+cloud (<a href="#mec" class="xref">Figure 4</a>) are distributed across the user equipment (UE),
+the radio unit (RU), the distributed unit (DU) and the central unit
+(CU) <span>[<a href="#PETERSON" class="xref">PETERSON</a>]</span>, the problem of efficiently performing AI-inference is
+one of optimizing the trade-off communication-compute as follows:
+compute (communication) power is more scarce (abundant) if the
+inference is performed closer to the UE, and more abundant (scarce)
+if performed closer to the CU. For instance, if an AR application
+running on a UE needs to perform an inference task at a time when the
+communication path from the RU to the DU is highly congested,
+then it will have an incentive to perform such a task directly
+in the UE or in the RU. If instead the network offers an uncongested
+path to the DU and the CU, it will
+have an incentive to run the inference task on these other
+nodes since they offer more compute power.<a href="#section-4.6-3" class="pilcrow">¶</a></p>
+<span id="name-an-ai-inference-application"></span><div id="mec">
+<figure id="figure-4">
+          <div class="alignLeft art-text artwork" id="section-4.6-4.1">
+<pre>
+   +------+       +------+       +------+       +------+
+   |      |       |      |       |      |       |      |
+   |  UE  +-------+  RU  +-------+  DU  +-------+  CU  +
+   |      |       |      |       |      |       |      |
+   +------+  Air  +------+       +------+       +------+
+          Interface      Fronthaul       Backhaul
+</pre>
+</div>
+<figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
+<a href="#name-an-ai-inference-application" class="selfRef">An AI-inference application in the edge cloud needs to place the inference task on a compute node location (UE, RU, DU or CU) that will perform well from both a compute and a communication standpoint.</a>
+          </figcaption></figure>
+</div>
+<p id="section-4.6-5">Using ALTO path vector <span>[<a href="#I-D.ietf-alto-path-vector" class="xref">I-D.ietf-alto-path-vector</a>]</span> and performance
+metrics <span>[<a href="#I-D.ietf-alto-performance-metrics" class="xref">I-D.ietf-alto-performance-metrics</a>]</span> features,
+the application could retrieve
+the amount of compute resources located in the RU, DU and CU.
+By extending ALTO to support bottleneck structures, the application
+would also be able to estimate in real-time the available
+bandwidth for the paths UE-RU, UE-RU-DU, and UE-RU-DU-CU.
+Further, using bottleneck structure methods described in <span>[<a href="#G2-SIGCOMM" class="xref">G2-SIGCOMM</a>]</span>,
+the application would be able to estimate the time to complete
+the inference task for each of the four possible scenarios (running in
+the UE, the RU, the DU or, or the CU) and choose the
+configuration with the fastest execution.<a href="#section-4.6-5" class="pilcrow">¶</a></p>
+<p id="section-4.6-6">Similar joint compute-communication optimization problems appear when
+performing neural network training in large-scale data centers.
+Large-scale data centers with millions
+of compute nodes are used to train gigantic neural networks (with
+potentially trillions of parameters). Such a massive task needs
+to be broken down into smaller subtasks that are then executed on
+the nodes. Once again, compute and communication need to
+be jointly optimized (see <span>[<a href="#TOPOOPT-MIT" class="xref">TOPOOPT-MIT</a>]</span> and <span>[<a href="#FLEXFLOW-STFORD" class="xref">FLEXFLOW-STFORD</a>]</span>)
+in order to ensure regions in the network don't become bottlenecks.
+By exposing bottleneck structure information using ALTO, the
+AI-training application can make better subtask placement decisions
+that avoid potential network bottlenecks.<a href="#section-4.6-6" class="pilcrow">¶</a></p>
+<p id="section-4.6-7">Finally, AI-training using planet-scale networks generalizes
+the same joint compute and communication problem to an Internet level
+<span>[<a href="#SINGULARITY-MSFT" class="xref">SINGULARITY-MSFT</a>]</span>, with the need to implement a global
+scheduler that is responsible for placing workloads
+onto clusters of globally-distributed compute nodes.
+Here too enabling better network state visibility using ALTO
+and bottleneck structure graphs could help the scheduler make
+better task placement decisions.<a href="#section-4.6-7" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="req_example">
@@ -2162,12 +2267,12 @@ into the ALTO standard. It is worth noticing that, as shown in
 This section provides a complete example for just one of the use
 cases. In particular, the focus of the next example is on the
 joint routing and congestion control use case <a href="#joint_use_case" class="xref">Section 4.4</a>.<a href="#section-5-1" class="pilcrow">¶</a></p>
-<p id="section-5-2"><a href="#b4" class="xref">Figure 4</a> provides a view of Google's B4 network as presented in
+<p id="section-5-2"><a href="#b4" class="xref">Figure 5</a> provides a view of Google's B4 network as presented in
 <span>[<a href="#B4-SIGCOMM" class="xref">B4-SIGCOMM</a>]</span>, providing connectivity to 12
 data centers distributed across the world (two in Asia, six
 in America and four in Europe).<a href="#section-5-2" class="pilcrow">¶</a></p>
-<span id="name-a-subset-of-googles-b4-netw"></span><div id="b4">
-<figure id="figure-4">
+<span id="name-googles-b4-network-introduc"></span><div id="b4">
+<figure id="figure-5">
         <div class="alignLeft art-text artwork" id="section-5-3.1">
 <pre>
     +-----+   +-----+  +-----+  +-----+   +------+    +------+
@@ -2191,18 +2296,18 @@ in America and four in Europe).<a href="#section-5-2" class="pilcrow">¶</a></p>
       Asia                 America                 Europe
 </pre>
 </div>
-<figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
-<a href="#name-a-subset-of-googles-b4-netw" class="selfRef">A subset of Google's B4 network introduced in [B4-SIGCOMM].</a>
+<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
+<a href="#name-googles-b4-network-introduc" class="selfRef">Google's B4 network introduced in [B4-SIGCOMM].</a>
         </figcaption></figure>
 </div>
 <p id="section-5-4">The 12 data centeres are connected via a total of 19 links, labeled
 l1, l2, ... l19. <a href="#b4_links" class="xref">Table 1</a> presents the pair of data centers that
 each link is connected to.<a href="#section-5-4" class="pilcrow">¶</a></p>
-<span id="name-link-connectivity-in-the-b4"></span><div id="b4_links">
+<span id="name-link-connectivity-adjacency"></span><div id="b4_links">
 <table class="center" id="table-1">
         <caption>
 <a href="#table-1" class="selfRef">Table 1</a>:
-<a href="#name-link-connectivity-in-the-b4" class="selfRef">Link connectivity in the B4 network.</a>
+<a href="#name-link-connectivity-adjacency" class="selfRef">Link connectivity (adjacency matrix) in the B4 network.</a>
         </caption>
 <thead>
           <tr>
@@ -2291,7 +2396,7 @@ Please see <a href="#bs_example" class="xref">Section 3.1</a> for a description 
 bottleneck structure. (See also <span>[<a href="#G2-SC" class="xref">G2-SC</a>]</span>, <span>[<a href="#G2-TREP" class="xref">G2-TREP</a>]</span> for details
 on the algorithm used to compute the bottleneck structure.)<a href="#section-5-7" class="pilcrow">¶</a></p>
 <span id="name-bottleneck-structure-of-goo"></span><div id="b4fgg">
-<figure id="figure-5">
+<figure id="figure-6">
         <div class="alignLeft art-text artwork" id="section-5-8.1">
 <pre>
    +--------+    +--------+
@@ -2325,8 +2430,8 @@ on the algorithm used to compute the bottleneck structure.)<a href="#section-5-7
      |   |         |   |
      |   |         |   +-----------------------+
      |   |         |                           |
-     |   +---------|-----------------+         |
-     |             |                 |         |
+     |   +---------|---------------+           |
+     |             |               |           |
    +-v----+    +---v---+       +---v---+   +---v---+
    |      |    |       |       |       |   |       |
    |  f6  |    |   f9  |       |  f23  |   |  f18  | (...)
@@ -2334,12 +2439,12 @@ on the algorithm used to compute the bottleneck structure.)<a href="#section-5-7
    +------+    +-------+       +-------+   +-------+
 </pre>
 </div>
-<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
+<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
 <a href="#name-bottleneck-structure-of-goo" class="selfRef">Bottleneck structure of Google's B4 network example.</a>
         </figcaption></figure>
 </div>
 <p id="section-5-9">For the sake of compactness,
-<a href="#b4fgg" class="xref">Figure 5</a> only includes the bottleneck links
+<a href="#b4fgg" class="xref">Figure 6</a> only includes the bottleneck links
 and a subset of the flow vertices that are part of the complete bottleneck
 structure. In particular, out of the 19 links that are part of B4,
 six links (l15, l7, l8, l10, l5, l3) are bottlenecks.<a href="#section-5-9" class="pilcrow">¶</a></p>
@@ -2367,10 +2472,10 @@ l15 -&gt; f1 -&gt; l8 -&gt; f6
 that s15 &lt; s8, where s15 is the rate of flow f1 bottlenecked
 at l15 and s8 is the rate of flow f6 bottlenecked at l8.<a href="#section-5-14" class="pilcrow">¶</a></p>
 <p id="section-5-15">Suppose now that an application needs to place a new flow on Google's
-B4 network to transfer a large data set from data center 4 (DC4)
-to data center 11 (DC11). The application needs to select and
+B4 network to transfer a large data set from data center 11 (DC11)
+to data center 4 (DC4). The application needs to select and
 configure a path
-from DC4 to DC11 (for instance, this could be done by using
+from DC11 to DC4 (for instance, this could be done by using
 SR <span>[<a href="#RFC8402" class="xref">RFC8402</a>]</span>). The shortest path DC11 -&gt; l10 -&gt;
 DC7 -&gt; l15 -&gt; DC4 is often used as the default option.
 Doing so, however, implies that the flow will be bottlenecked at
@@ -2416,8 +2521,8 @@ to integrate the BSG service into the ALTO standard.<a href="#section-6-1" class
 <p id="section-6.1-1">The first base requirement consists in extending the ALTO
 server with the capability to compute bottleneck structures.
 For instance, with this capability, given the network
-configuration in <a href="#b4" class="xref">Figure 4</a>, the ALTO server would be able to
-compute the bottleneck structure shown in <a href="#b4fgg" class="xref">Figure 5</a>:<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+configuration in <a href="#b4" class="xref">Figure 5</a>, the ALTO server would be able to
+compute the bottleneck structure shown in <a href="#b4fgg" class="xref">Figure 6</a>:<a href="#section-6.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.1-2.1">Requirement 1A (R1A). The ALTO server <span class="bcp14">MUST</span> compute the
 bottleneck structure graph to allow applications optimize
@@ -2591,7 +2696,7 @@ base ALTO protocol fully apply when this proposed extension
 is provided by an ALTO server.<a href="#section-7-1" class="pilcrow">¶</a></p>
 <p id="section-7-2">The Bottleneck Structure Graph extension requires additional scrutiny
 on three security considerations discussed in the base protocol:
-confidentiality of ALTO information (Section 15.3 of <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>),
+Confidentiality of ALTO information (Section 15.3 of <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>),
 potential undesirable guidance from authenticated ALTO information
 (Section 15.2 of <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>), and availability of ALTO service
 (Section 15.5 of <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>).<a href="#section-7-2" class="pilcrow">¶</a></p>
@@ -2627,25 +2732,31 @@ the generic capability provided by this extension is not fully
 assessed.<a href="#section-7-4.3" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-7-5">For undesirable guidance, the ALTO server must be aware that,
+<p id="section-7-5">We note that for operators that are sensitive about disclosing
+flow-level information (even if it is anonymized), then
+they <span class="bcp14">SHOULD</span> consider using the Path Gradient Graph (PGG) or
+the QoS-Path Gradient Graph (Q-PGG) since these objects provide
+the additional security advantage of hiding flow-level
+information from the graph.<a href="#section-7-5" class="pilcrow">¶</a></p>
+<p id="section-7-6">For undesirable guidance, the ALTO server must be aware that,
 if information reduction/obfuscation methods are implemented,
 they may lead to potential misleading information from
 Authenticated ALTO Information. In such cases, the Protection
-Strategies described in Section 15.2.2 of <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> <span class="bcp14">MUST</span> be considered.<a href="#section-7-5" class="pilcrow">¶</a></p>
-<p id="section-7-6">For availability of ALTO service, an ALTO server should be cognizant
+Strategies described in Section 15.2.2 of <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> <span class="bcp14">MUST</span> be considered.<a href="#section-7-6" class="pilcrow">¶</a></p>
+<p id="section-7-7">For availability of ALTO service, an ALTO server should be cognizant
 that using Bottleneck Structures might have a new risk: frequently
 querying the BSG service might consume intolerable amounts of
 computation and storage on the server side.
 For example, if an ALTO server implementation dynamically computes
 the Bottleneck Structure for each request, the BSG service
 may become an entry point for denial-of-service attacks on the
-availability of an ALTO server.<a href="#section-7-6" class="pilcrow">¶</a></p>
-<p id="section-7-7">To mitigate this risk, an ALTO server may consider using
+availability of an ALTO server.<a href="#section-7-7" class="pilcrow">¶</a></p>
+<p id="section-7-8">To mitigate this risk, an ALTO server may consider using
 optimizations such as precomputation-and-projection mechanisms
 <span>[<a href="#MERCATOR" class="xref">MERCATOR</a>]</span> to reduce the overhead for processing each query.
 An ALTO server may also protect itself from malicious clients by
 monitoring the behaviors of clients and stopping serving clients with
-suspicious behaviors (e.g., sending requests at a high frequency).<a href="#section-7-7" class="pilcrow">¶</a></p>
+suspicious behaviors (e.g., sending requests at a high frequency).<a href="#section-7-8" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
@@ -2668,6 +2779,14 @@ ALTO Entity Property Type Registry.<a href="#section-8-1" class="pilcrow">¶</a>
 <a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
+<dt id="I-D.ietf-alto-path-vector">[I-D.ietf-alto-path-vector]</dt>
+        <dd>
+<span class="refAuthor">Gao, K.</span>, <span class="refAuthor">Lee, Y.</span>, <span class="refAuthor">Randriamasy, S.</span>, <span class="refAuthor">Yang, Y. R.</span>, and <span class="refAuthor">J. J. Zhang</span>, <span class="refTitle">"An ALTO Extension: Path Vector"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-alto-path-vector-25</span>, <time datetime="2022-03-20" class="refDate">20 March 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-alto-path-vector-25">https://datatracker.ietf.org/doc/html/draft-ietf-alto-path-vector-25</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-alto-performance-metrics">[I-D.ietf-alto-performance-metrics]</dt>
+        <dd>
+<span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Yang, Y. R.</span>, <span class="refAuthor">Lee, Y.</span>, <span class="refAuthor">Dhody, D.</span>, <span class="refAuthor">Randriamasy, S.</span>, and <span class="refAuthor">L. M. C. Murillo</span>, <span class="refTitle">"ALTO Performance Cost Metrics"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-alto-performance-metrics-28</span>, <time datetime="2022-03-21" class="refDate">21 March 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-alto-performance-metrics-28">https://datatracker.ietf.org/doc/html/draft-ietf-alto-performance-metrics-28</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
@@ -2706,6 +2825,10 @@ ALTO Entity Property Type Registry.<a href="#section-8-1" class="pilcrow">¶</a>
 <dt id="BE-SIGCOMM">[BE-SIGCOMM]</dt>
         <dd>
 <span class="refAuthor">Kumar et al, A.</span>, <span class="refTitle">"BwE: Flexible, Hierarchical Bandwidth Allocation for WAN Distributed Computing"</span>, <span class="seriesInfo">ACM SIGCOMM </span>, <time datetime="2015" class="refDate">2015</time>. </dd>
+<dd class="break"></dd>
+<dt id="FLEXFLOW-STFORD">[FLEXFLOW-STFORD]</dt>
+        <dd>
+<span class="refAuthor">Jia et al, Z.</span>, <span class="refTitle">"Beyond Data And Model Parallelism For Deep Neural Networks"</span>, <span>n.d.</span>, <span>&lt;<a href="https://arxiv.org/pdf/1807.05358.pdf%5B">https://arxiv.org/pdf/1807.05358.pdf[</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="FLOWDIR">[FLOWDIR]</dt>
         <dd>
@@ -2756,8 +2879,16 @@ ALTO Entity Property Type Registry.<a href="#section-8-1" class="pilcrow">¶</a>
 <span class="refAuthor">Peterson, L.</span> and <span class="refAuthor">O. Sunay</span>, <span class="refTitle">"5G Mobile Networks: A Systems Approach"</span>, <span class="seriesInfo">Open Networking Foundation </span>, <time datetime="2020" class="refDate">2020</time>. </dd>
 <dd class="break"></dd>
 <dt id="SH-SIGCOMM">[SH-SIGCOMM]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Singh et al, R.</span>, <span class="refTitle">"Cost-effective capacity provisioning in wide area networks with Shoofly"</span>, <span class="seriesInfo">ACM SIGCOMM </span>, <time datetime="2021" class="refDate">2021</time>. </dd>
+<dd class="break"></dd>
+<dt id="SINGULARITY-MSFT">[SINGULARITY-MSFT]</dt>
+        <dd>
+<span class="refAuthor">Shukla et al, D.</span>, <span class="refTitle">"Singularity: Planet-Scale, Preemptive and Elastic Scheduling of AI Workloads"</span>, <span>n.d.</span>, <span>&lt;<a href="https://arxiv.org/pdf/2202.07848.pdf">https://arxiv.org/pdf/2202.07848.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="TOPOOPT-MIT">[TOPOOPT-MIT]</dt>
+      <dd>
+<span class="refAuthor">Wang et al, W.</span>, <span class="refTitle">"TOPOOPT: Optimizing the Network Topology for Distributed DNN Training"</span>, <span>n.d.</span>, <span>&lt;<a href="https://arxiv.org/pdf/2202.00433.pdf">https://arxiv.org/pdf/2202.00433.pdf</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
