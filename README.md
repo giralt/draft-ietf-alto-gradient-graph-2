@@ -1,11 +1,11 @@
-# An ALTO Extension: Gradient Graph Service
+# Supporting Bottleneck Structure Graphs in ALTO: Use Cases and Requirements
 
-This is the working area for the individual Internet-Draft, "An ALTO Extension: Gradient Graph Service".
+This is the working area for the individual Internet-Draft, "Supporting Bottleneck Structure Graphs in ALTO: Use Cases and Requirements".
 
-* [Editor's Copy](https://giralt.github.io/draft-ietf-alto-gradient-graph-2/#go.draft-giraltyellamraju-alto-gradient-graph.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-giraltyellamraju-alto-gradient-graph)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-giraltyellamraju-alto-gradient-graph)
-* [Compare Editor's Copy to Individual Draft](https://giralt.github.io/draft-ietf-alto-gradient-graph-2/#go.draft-giraltyellamraju-alto-gradient-graph.diff)
+* [Editor's Copy](https://giralt.github.io/draft-ietf-alto-gradient-graph/#go.draft-giraltyellamraju-alto-bsg-requirements.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-giraltyellamraju-alto-bsg-requirements)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-giraltyellamraju-alto-bsg-requirements)
+* [Compare Editor's Copy to Individual Draft](https://giralt.github.io/draft-ietf-alto-gradient-graph/#go.draft-giraltyellamraju-alto-bsg-requirements.diff)
 
 
 ## Contributing
