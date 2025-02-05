@@ -5,7 +5,7 @@
 ALTO                                                       J. Ros-Giralt
 Internet-Draft                                             S. Yellamraju
 Intended status: Informational                                  Qualcomm
-Expires: 28 March 2023                                             Q. Wu
+Expires: 9 August 2025                                             Q. Wu
                                                                   Huawei
                                                          L. M. Contreras
                                                               Telefonica
@@ -13,7 +13,7 @@ Expires: 28 March 2023                                             Q. Wu
                                                          Yale University
                                                                   K. Gao
                                                       Sichuan University
-                                                       24 September 2022
+                                                         5 February 2025
 
 
      Supporting Bottleneck Structure Graphs in ALTO: Use Cases and
@@ -66,11 +66,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 March 2023.
+   This Internet-Draft will expire on 9 August 2025.
 
 Copyright Notice
 
-   Copyright (c) 2022 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1470,8 +1470,9 @@ Table of Contents
 
    [I-D.ietf-alto-performance-metrics]
               Wu, Q., Yang, Y. R., Lee, Y., Dhody, D., Randriamasy, S.,
-              and L. M. Contreras, "ALTO Performance Cost Metrics", Work
-              in Progress, Internet-Draft, draft-ietf-alto-performance-
+              and L. M. Contreras, "Application-Layer Traffic
+              Optimization (ALTO) Performance Cost Metrics", Work in
+              Progress, Internet-Draft, draft-ietf-alto-performance-
               metrics-28, 21 March 2022,
               <https://datatracker.ietf.org/doc/html/draft-ietf-alto-
               performance-metrics-28>.
